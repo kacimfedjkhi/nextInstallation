@@ -7,6 +7,8 @@ class WriteStore {
   theme = "";
   message = "";
 
+  inputMethod = "templates";
+
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -38,13 +40,30 @@ class WriteStore {
         return "Unknown stepIndex";
     }
   };
+
+  handleChangeInput = selectedInput => {
+    switch (selectedInput) {
+      case "templates":
+        this.inputMethod = selectedInput;
+        break;
+      case "keyboard":
+        console.log(selectedInput);
+
+        this.inputMethod = selectedInput;
+        break;
+      default:
+        return "templates";
+    }
+  };
 }
 
 decorate(WriteStore, {
   activeStep: observable,
   theme: observable,
   message: observable,
-  setActiveStep: action
+  inputMethod: observable,
+  setActiveStep: action,
+  handleChangeInput: action
 });
 
 export default WriteStore;
