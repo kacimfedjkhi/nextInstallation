@@ -21,13 +21,13 @@ const MessageInput = ({ writeStore }) => {
   return (
     <>
       <Button
-        variant={input === "templates" ? "contained" : "default"}
+        variant={input === "templates" ? "contained" : "outlined"}
         onClick={() => writeStore.handleChangeInput("templates")}
       >
         sjablonen
       </Button>
       <Button
-        variant={input === "keyboard" ? "contained" : "default"}
+        variant={input === "keyboard" ? "contained" : "outlined"}
         onClick={() => writeStore.handleChangeInput("keyboard")}
       >
         eigen boodschap
