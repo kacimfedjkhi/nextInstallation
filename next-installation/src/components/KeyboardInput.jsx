@@ -1,25 +1,14 @@
 import React, { useRef, useState } from "react";
 import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import { inject, observer } from "mobx-react";
-
-const slideUp = keyframes`
-  from {
-    transform: translate-y(-100px);
-  }
-
-  to {
-    transform: translate-y(20px);
-  }
-`;
 
 const Div = styled.div`
   width: 50%;
   position: absolute;
   bottom: 20px;
   right: 20px;
-  animation: ${slideUp} 2s linear;
 `;
 
 const KeyboardInput = ({ writeStore }) => {
