@@ -7,7 +7,7 @@ import CardsCollection from "../components/CardsCollection";
 const Open = () => {
   return (
     <>
-      <h1>Een kaartje openen</h1>
+      <h1>Pick a card to open</h1>
       <CardsCollection />
     </>
   );

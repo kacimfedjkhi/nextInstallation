@@ -1,52 +1,161 @@
 import React from "react";
-import Draggable from "react-draggable";
 import styled from "styled-components";
+import CardElement from "../components/CardElement";
 
 const StyledSpace = styled.div`
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: pink;
+  background-color: #f5f5f5;
   z-index: -1;
 `;
 
-const Card = styled.div`
-  width: 400px;
-  height: 270px;
-  background-color: white;
-  border-radius: 3px;
-  box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.6);
-`;
-
-const CardsCollection = () => {
+const CardsCollection = props => {
   //const classes = useStyles();
 
   const getXpos = () => {
-    const x = (Math.random() * (window.innerHeight - 400)).toFixed();
-    console.log("EY TIS X", x);
+    const x = Math.floor(Math.random() * window.innerWidth - 400);
+    console.log("EY TIS X", window.innerWidth, x);
 
     return x;
   };
 
   const getYpos = () => {
-    const y = (Math.random() * (window.innerHeight - 270)).toFixed();
-    console.log("EY TIS Y", y);
+    const y = Math.floor(Math.random() * window.innerHeight - 250);
+    console.log("EY TIS Y", window.innerHeight, y);
 
     return y;
   };
 
-  const x = (Math.random() * (window.innerHeight - 400)).toFixed();
-  const y = (Math.random() * (window.innerHeight - 270)).toFixed();
+  const getRotation = () => {
+    return Math.floor(Math.floor(Math.random() * 10) + 1);
+  };
 
   return (
     <StyledSpace>
-      <Draggable bounds="parent" axis="both" defaultPosition={{ x: 35, y: 34 }}>
-        <Card elevation={3}>
-          <p>drag test</p>
-        </Card>
-      </Draggable>
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        rotation={getRotation()}
+        theme="sports"
+        messages="1"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="2"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="find me"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
+      <CardElement
+        xPos={getXpos()}
+        yPos={getYpos()}
+        theme="sports"
+        messages="3"
+      />
     </StyledSpace>
   );
 };
