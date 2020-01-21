@@ -1,9 +1,6 @@
 import React from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 
-// import { Link } from "react-router-dom";
-// import { ROUTES } from "../constants";
-// import Button from "@material-ui/core/Button";
 import Steps from "../components/Steps";
 import BottomButtons from "../components/BottomButtons";
 import Card from "../components/Card";
