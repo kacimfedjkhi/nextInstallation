@@ -2,5 +2,6 @@ export const ROUTES = {
   home: `/`,
   write: `/write`,
   open: `/open`,
-  admin: `/admin`
+  admin: `/admin`,
+  setup: `/setup`
 };

@@ -6,6 +6,7 @@ import Home from "./Home";
 import Write from "./Write";
 import Open from "./Open";
 import Admin from "./Admin";
+import Setup from "./Setup";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path={ROUTES.write} component={Write} />
         <Route path={ROUTES.open} component={Open} />
         <Route path={ROUTES.admin} component={Admin} />
+        <Route path={ROUTES.setup} component={Setup} />
       </Switch>
     </main>
   );
