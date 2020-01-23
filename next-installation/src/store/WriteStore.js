@@ -9,6 +9,8 @@ class WriteStore {
 
   inputMethod = "templates";
 
+  cardFlipped = false;
+
   constructor(rootStore) {
     this.rootStore = rootStore;
   }
@@ -55,6 +57,14 @@ class WriteStore {
         return "templates";
     }
   };
+
+  handleFlipCard = () => {
+    if (!this.cardFlipped) {
+      this.cardFlipped = true;
+    } else {
+      this.cardFlipped = false;
+    }
+  };
 }
 
 decorate(WriteStore, {
@@ -62,8 +72,10 @@ decorate(WriteStore, {
   theme: observable,
   message: observable,
   inputMethod: observable,
+  cardFlipped: observable,
   setActiveStep: action,
-  handleChangeInput: action
+  handleChangeInput: action,
+  handleFlipCard: action
 });
 
 export default WriteStore;
