@@ -3,6 +3,7 @@ import { decorate, observable, action } from "mobx";
 //import { decorate, observable, action } from "mobx";
 
 class UIStore {
+  setupStep = 0;
   adminLanguage = "";
   userLanguage = "";
   locationType = "cultuurhuis";
