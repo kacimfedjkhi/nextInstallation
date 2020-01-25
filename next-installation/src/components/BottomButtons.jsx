@@ -1,13 +1,23 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
+import { Redirect, withRouter } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
+import { ROUTES } from "../constants";
 
-const BottomButtons = ({ writeStore }) => {
+const BottomButtons = ({ writeStore, history }) => {
   const activeStep = writeStore.activeStep;
 
   const handleNext = () => {
     writeStore.setActiveStep("increase");
+
+    if (activeStep === 0) {
+      writeStore.cardFlipped = false;
+    }
+
+    if (activeStep === 2) {
+      history.push(ROUTES.sent);
+    }
   };
 
   const handlePrev = () => {
@@ -47,7 +57,7 @@ const BottomButtons = ({ writeStore }) => {
       break;
     case 2:
       prevBtn = "boodschap wijzigen";
-      nextBtn = "verzegelen en versturen";
+      nextBtn = "kaartje versturen";
       break;
     default:
       return "Uw kaartje wordt verzonden";
@@ -73,4 +83,4 @@ const BottomButtons = ({ writeStore }) => {
   );
 };
 
-export default inject(`writeStore`)(observer(BottomButtons));
+export default inject(`writeStore`)(withRouter(observer(BottomButtons)));

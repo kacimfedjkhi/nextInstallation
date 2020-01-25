@@ -3,7 +3,7 @@ import Draggable from "react-draggable";
 import styled from "styled-components";
 
 const CardElement = props => {
-  const Card = styled.div`
+  const Card = styled.span`
     width: 400px;
     height: 270px;
     background-color: white;
@@ -14,8 +14,6 @@ const CardElement = props => {
   `;
 
   const handleDragCard = e => {
-    console.log("oh wawwww");
-    console.log(e.target);
     e.target.style.zIndex = "999";
   };
 

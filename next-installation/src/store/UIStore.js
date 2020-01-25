@@ -3,13 +3,17 @@ import { decorate, observable, action } from "mobx";
 //import { decorate, observable, action } from "mobx";
 
 class UIStore {
+  selectedAction = "";
   setupStep = 0;
   adminLanguage = "";
+
   userLanguage = "";
   locationType = "cultuurhuis";
   selectedLocation = "";
+
   event = false;
   eventName = "";
+  modal = false;
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -75,6 +79,10 @@ class UIStore {
   addEventName = value => {
     this.eventName = value;
   };
+
+  handleToggleModal = () => {
+    this.modal ? (this.modal = false) : (this.modal = true);
+  };
 }
 
 decorate(UIStore, {
@@ -84,6 +92,8 @@ decorate(UIStore, {
   locationType: observable,
   event: observable,
   eventName: observable,
+  selectedAction: observable,
+  modal: observable,
   setAdminLanguage: action,
   setUserLanguage: action,
   changeLocationType: action,
