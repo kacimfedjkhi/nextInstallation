@@ -8,13 +8,11 @@ const StyledSpace = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #f5f5f5;
+  background-color: #f5f5f0;
   z-index: -1;
 `;
 
 const CardsCollection = props => {
-  //const classes = useStyles();
-
   const getXpos = () => {
     const x = Math.floor(Math.random() * window.innerWidth - 400);
     console.log("EY TIS X", window.innerWidth, x);
@@ -29,16 +27,11 @@ const CardsCollection = props => {
     return y;
   };
 
-  const getRotation = () => {
-    return Math.floor(Math.floor(Math.random() * 10) + 1);
-  };
-
   return (
     <StyledSpace>
       <CardElement
         xPos={getXpos()}
         yPos={getYpos()}
-        rotation={getRotation()}
         theme="sports"
         messages="1"
       />

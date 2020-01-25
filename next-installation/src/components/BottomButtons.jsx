@@ -1,6 +1,5 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
-import { Redirect, withRouter } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
 import { ROUTES } from "../constants";
@@ -83,4 +82,4 @@ const BottomButtons = ({ writeStore, history }) => {
   );
 };
 
-export default inject(`writeStore`)(withRouter(observer(BottomButtons)));
+export default inject(`writeStore`)(observer(BottomButtons));

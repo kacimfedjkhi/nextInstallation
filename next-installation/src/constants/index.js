@@ -3,6 +3,7 @@ export const ROUTES = {
   onboarding: `/onboarding`,
   write: `/write`,
   open: `/open`,
+  detail: `/detail`,
   admin: `/admin`,
   setup: `/setup`,
   sent: `/sent`

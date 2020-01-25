@@ -1,17 +1,15 @@
 import React from "react";
-import CardsCollection from "../components/CardsCollection";
 // import { Link } from "react-router-dom";
 // import { ROUTES } from "../constants";
 // import Button from "@material-ui/core/Button";
+import { inject, observer } from "mobx-react";
 
-const Open = () => {
+const CardDetail = ({ uiStore }) => {
   return (
     <>
-      <h1>Pick a card to open</h1>
-      
-      <CardsCollection />
+      <h1>Detailpaginaaa</h1>
     </>
   );
 };
 
-export default Open;
+export default inject(`uiStore`)(observer(CardDetail));

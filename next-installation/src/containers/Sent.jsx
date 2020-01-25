@@ -34,8 +34,8 @@ const Home = ({ uiStore }) => {
       </QRContainer>
 
       <Link to={ROUTES.onboarding}>
-        <Button variant="contained" onClick={() => handleSetAction("write")}>
-          Schrijf een kaartje
+        <Button variant="contained" onClick={() => handleSetAction("open")}>
+          Klaar, ga verder!
         </Button>
       </Link>
     </>

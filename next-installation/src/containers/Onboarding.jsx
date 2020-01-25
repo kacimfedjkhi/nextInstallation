@@ -21,13 +21,16 @@ const Onboarding = ({ uiStore }) => {
             barst van mensen die iets te vertellen hebben. Ben je benieuws?
           </p>
         ) : (
-          `Er gaan heel wat kaartjes rond binnen de Eurometropool. Ondek ze!`
+          <p>
+            Er zijn momenteel heel wat digitale postkaartjes in de omgang binnen
+            de <span onClick={uiStore.handleToggleModal}>Eurometropool</span>.
+          </p>
         )}
       </h1>
       <p>
         {selectedAction === "write"
           ? `Stuur je digitaal postkaartje de metropool in!`
-          : `Voorzie een kaartje binnen de eurometropool van een antwoord!`}
+          : `Beantwoord nu een kaartje en deel uw kennis`}
       </p>
       {selectedAction === "write" ? (
         <ul>
@@ -53,9 +56,15 @@ const Onboarding = ({ uiStore }) => {
       <Link to={ROUTES.home}>
         <Button>Terug naar start</Button>
       </Link>
-      <Link to={ROUTES.write}>
-        <Button variant="contained">Verstuur een kaartje</Button>
-      </Link>
+      {selectedAction === "write" ? (
+        <Link to={ROUTES.write}>
+          <Button variant="contained">Verstuur een kaartje</Button>
+        </Link>
+      ) : (
+        <Link to={ROUTES.open}>
+          <Button variant="contained">Open een kaartje</Button>
+        </Link>
+      )}
     </>
   );
 };
