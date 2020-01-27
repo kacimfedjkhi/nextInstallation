@@ -1,6 +1,5 @@
 import { decorate, observable, action } from "mobx";
-
-//import { decorate, observable, action } from "mobx";
+import io from "socket.io-client";
 
 class UIStore {
   selectedAction = "";
@@ -15,9 +14,29 @@ class UIStore {
   eventName = "";
   modal = false;
 
+  socket = null;
+
   constructor(rootStore) {
     this.rootStore = rootStore;
+    this.connectSocket();
   }
+
+  connectSocket = () => {
+    let port;
+    if (
+      window.location.hostname === `localhost` ||
+      window.location.hostname === `192.168.0.218`
+    ) {
+      port = `:4000`;
+    } else {
+      port = ``;
+    }
+
+    this.socket = io(
+      `${window.location.protocol}//${window.location.hostname}${port}`
+    );
+    //this.socket = io(`/`);
+  };
 
   setAdminLanguage = language => {
     switch (language) {

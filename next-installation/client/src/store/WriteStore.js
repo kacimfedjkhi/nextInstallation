@@ -1,4 +1,6 @@
 import { decorate, observable, action } from "mobx";
+import Api from "../api/index";
+import Card from "../models/Card";
 
 //import { decorate, observable, action } from "mobx";
 
@@ -6,6 +8,8 @@ class WriteStore {
   activeStep = 0;
   theme = "";
   message = "";
+  uniqueId = "";
+  pin = 1997;
 
   inputMethod = "templates";
 
@@ -13,6 +17,9 @@ class WriteStore {
 
   constructor(rootStore) {
     this.rootStore = rootStore;
+    this.api = new Api(`card`);
+    //this.socket = rootStore.uiStore.socket;
+    console.log(rootStore);
   }
 
   setActiveStep = amount => {
@@ -64,6 +71,18 @@ class WriteStore {
     } else {
       this.cardFlipped = false;
     }
+  };
+
+  addCard = async data => {
+    const card = new Card(
+      this.theme,
+      this.message,
+      this.rootStore.uiStore.selectedLocation,
+      [],
+      this.uniqueId,
+      this.pin
+    );
+    this.socket.emit(`createCard`, card);
   };
 }
 
