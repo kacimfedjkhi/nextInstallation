@@ -18,8 +18,7 @@ class WriteStore {
   constructor(rootStore) {
     this.rootStore = rootStore;
     this.api = new Api(`card`);
-    //this.socket = rootStore.uiStore.socket;
-    console.log(rootStore);
+    this.socket = rootStore.uiStore.socket;
   }
 
   setActiveStep = amount => {
@@ -73,7 +72,7 @@ class WriteStore {
     }
   };
 
-  addCard = async data => {
+  sendCard = async data => {
     const card = new Card(
       this.theme,
       this.message,
@@ -82,7 +81,11 @@ class WriteStore {
       this.uniqueId,
       this.pin
     );
-    this.socket.emit(`createCard`, card);
+    await this.rootStore.openStore.cards.push(card);
+    //this.api.createCard(card);
+    console.log(this.socket);
+
+    this.socket.emit(`sendCard`, card);
   };
 }
 
@@ -94,7 +97,8 @@ decorate(WriteStore, {
   cardFlipped: observable,
   setActiveStep: action,
   handleChangeInput: action,
-  handleFlipCard: action
+  handleFlipCard: action,
+  sendCard: action
 });
 
 export default WriteStore;

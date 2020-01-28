@@ -2,8 +2,10 @@
 const Card = require(`../models/card.model.js`);
 
 exports.create = async (req, res) => {
+  console.log("in create controller!!");
+
   try {
-    const card = new card({
+    const card = new Card({
       //add card data
       theme: req.body.theme,
       text: req.body.message,

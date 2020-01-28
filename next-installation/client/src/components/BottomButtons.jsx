@@ -15,7 +15,8 @@ const BottomButtons = ({ writeStore, history }) => {
     }
 
     if (activeStep === 2) {
-      history.push(ROUTES.sent);
+      //history.push(ROUTES.sent);
+      writeStore.sendCard();
     }
   };
 

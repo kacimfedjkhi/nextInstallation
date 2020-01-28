@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CardElement from "./CardElement";
+import { inject, observer } from "mobx-react";
 
 const StyledSpace = styled.div`
   width: 100vw;
@@ -12,7 +13,7 @@ const StyledSpace = styled.div`
   z-index: -1;
 `;
 
-const CardsCollection = props => {
+const CardsCollection = ({ openStore }) => {
   const getXpos = () => {
     const x = Math.floor(Math.random() * window.innerWidth - 400);
     console.log("EY TIS X", window.innerWidth, x);
@@ -27,122 +28,18 @@ const CardsCollection = props => {
     return y;
   };
 
+  let cards = openStore.cards;
+
   return (
     <StyledSpace>
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="1"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="2"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="find me"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
+      {cards.map(card => (
+        <CardElement
+          xPos={getXpos()}
+          yPos={getYpos()}
+          theme="sports"
+          messages="3"
+        />
+      ))}
       <CardElement
         xPos={getXpos()}
         yPos={getYpos()}
@@ -153,4 +50,4 @@ const CardsCollection = props => {
   );
 };
 
-export default CardsCollection;
+export default inject(`openStore`)(observer(CardsCollection));

@@ -35,7 +35,6 @@ class UIStore {
     this.socket = io(
       `${window.location.protocol}//${window.location.hostname}${port}`
     );
-    //this.socket = io(`/`);
   };
 
   setAdminLanguage = language => {
