@@ -3,7 +3,7 @@ module.exports = server => {
   const io = require(`socket.io`).listen(server);
   const connections = [];
 
-  //io.serveClient(`origins`, `*:*`);
+  io.serveClient(`origins`, `*:*`);
   io.on(`connection`, socket => {
     connections.push(socket);
     console.log(`connected: ${connections.length} sockets connected`);
