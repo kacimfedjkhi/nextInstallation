@@ -18,7 +18,7 @@ const Onboarding = ({ uiStore }) => {
         {selectedAction === "write" ? (
           <p>
             De <span onClick={uiStore.handleToggleModal}>Eurometropool</span>{" "}
-            barst van mensen die iets te vertellen hebben. Ben je benieuws?
+            barst van mensen die iets te vertellen hebben. Ben je benieuwd?
           </p>
         ) : (
           <p>

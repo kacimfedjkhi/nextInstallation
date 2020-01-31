@@ -14,12 +14,16 @@ const Home = ({ uiStore }) => {
       <h1>Schrijf of open een kaartje</h1>
       <Link to={ROUTES.onboarding}>
         <Button variant="contained" onClick={() => handleSetAction("write")}>
-          Schrijf een kaartje
+          {uiStore.userLanguage === "nl"
+            ? "Schrijf een kaartje"
+            : "Ecrit une carte"}
         </Button>
       </Link>
       <Link to={ROUTES.onboarding}>
         <Button variant="contained" onClick={() => handleSetAction("open")}>
-          Open een kaartje
+          {uiStore.userLanguage === "nl"
+            ? "Open een kaartje"
+            : "Ouvre une carte"}
         </Button>
       </Link>
     </>

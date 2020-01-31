@@ -15,7 +15,8 @@ class OpenStore {
 }
 
 decorate(OpenStore, {
-  cards: observable
+  cards: observable,
+  getCards: action
 });
 
 export default OpenStore;

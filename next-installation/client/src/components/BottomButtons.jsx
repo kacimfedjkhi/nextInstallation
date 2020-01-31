@@ -2,7 +2,6 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 
 import Button from "@material-ui/core/Button";
-import { ROUTES } from "../constants";
 
 const BottomButtons = ({ writeStore, history }) => {
   const activeStep = writeStore.activeStep;
