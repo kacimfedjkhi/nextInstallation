@@ -2,7 +2,7 @@ import React from "react";
 import Draggable from "react-draggable";
 import styled from "styled-components";
 
-const CardElement = (props, { history }) => {
+const CardElement = props => {
   const getRotation = () => {
     let rotation = Math.floor(Math.random() * 11); // this will get a number between 1 and 99;
     rotation *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // this will add minus sign in 50% of cases

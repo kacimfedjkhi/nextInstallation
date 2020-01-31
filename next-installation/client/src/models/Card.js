@@ -25,8 +25,8 @@ class Card {
     this.setId(values._id);
     this.setTheme(values.theme);
     this.setText(values.text);
-    this.locations(values.locations);
-    this.answers(values.answers);
+    this.setLocations(values.locations);
+    this.setAnswers(values.answers);
     this.setUniqueId(values.uniqueId);
   };
 }

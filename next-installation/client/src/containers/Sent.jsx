@@ -8,9 +8,10 @@ import QRCode from "qrcode.react";
 
 import styled from "styled-components";
 
-const Home = ({ uiStore }) => {
-  const handleSetAction = e => {
-    uiStore.selectedAction = e;
+const Home = ({ uiStore, writeStore }) => {
+  const handleEndWriting = e => {
+    uiStore.selectedAction = "open";
+    writeStore.sendCard();
   };
 
   const QRContainer = styled.div`
@@ -23,18 +24,18 @@ const Home = ({ uiStore }) => {
     return shortid.generate();
   };
 
-  const uniqueKey = getUniqueKey();
+  writeStore.uniqueId = getUniqueKey();
 
   return (
     <>
       <h1>Uw kaartje werd met succes verzonden!</h1>
-      <p>Dit is uw unieke code: {uniqueKey}</p>
+      <p>Dit is uw unieke code: {writeStore.uniqueId}</p>
       <QRContainer>
-        <QRCode value={`index.html/${uniqueKey}`} />
+        <QRCode value={`index.html/${writeStore.uniqueId}`} />
       </QRContainer>
 
       <Link to={ROUTES.onboarding}>
-        <Button variant="contained" onClick={() => handleSetAction("open")}>
+        <Button variant="contained" onClick={() => handleEndWriting()}>
           Klaar, ga verder!
         </Button>
       </Link>
@@ -42,4 +43,4 @@ const Home = ({ uiStore }) => {
   );
 };
 
-export default inject(`uiStore`)(observer(Home));
+export default inject(`uiStore`, `writeStore`)(observer(Home));

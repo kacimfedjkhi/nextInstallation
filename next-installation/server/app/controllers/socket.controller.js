@@ -21,7 +21,7 @@ module.exports = server => {
 
         //const r = await card.save();
 
-        socket.emit(`getCard`, card);
+        io.emit(`getCard`, card);
       } catch (err) {
         return err;
       }

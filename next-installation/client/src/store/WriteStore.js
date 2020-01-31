@@ -78,6 +78,16 @@ class WriteStore {
     console.log(this.socket);
 
     this.socket.emit(`sendCard`, card);
+
+    this.emptyValues();
+  };
+
+  emptyValues = () => {
+    this.activeStep = 0;
+    this.theme = "";
+    this.message = "";
+    this.uniqueId = "";
+    this.cardFlipped = true;
   };
 }
 
@@ -90,7 +100,8 @@ decorate(WriteStore, {
   setActiveStep: action,
   handleChangeInput: action,
   handleFlipCard: action,
-  sendCard: action
+  sendCard: action,
+  emptyValues: action
 });
 
 export default WriteStore;

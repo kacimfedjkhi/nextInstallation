@@ -40,12 +40,6 @@ const CardsCollection = ({ openStore }) => {
           messages="3"
         />
       ))}
-      <CardElement
-        xPos={getXpos()}
-        yPos={getYpos()}
-        theme="sports"
-        messages="3"
-      />
     </StyledSpace>
   );
 };

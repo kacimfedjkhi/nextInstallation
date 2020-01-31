@@ -1,6 +1,7 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { ROUTES } from "../constants/index";
+import { withRouter } from "react-router-dom";
 
 import Button from "@material-ui/core/Button";
 
@@ -15,8 +16,8 @@ const BottomButtons = ({ writeStore, history }) => {
     }
 
     if (activeStep === 2) {
-      this.history.push(ROUTES.sent);
       //writeStore.sendCard();
+      history.push(ROUTES.sent);
     }
   };
 
@@ -83,4 +84,4 @@ const BottomButtons = ({ writeStore, history }) => {
   );
 };
 
-export default inject(`writeStore`)(observer(BottomButtons));
+export default inject(`writeStore`)(withRouter(observer(BottomButtons)));
