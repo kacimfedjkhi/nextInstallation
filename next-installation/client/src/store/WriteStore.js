@@ -71,7 +71,9 @@ class WriteStore {
     }
   };
 
-  sendCard = async data => {
+  sendCard = async () => {
+    console.log(this.message);
+
     const card = new Card(this.theme, this.message, [], [], this.uniqueId);
     await this.rootStore.openStore.cards.push(card);
     this.api.createCard(card);

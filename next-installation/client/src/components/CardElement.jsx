@@ -63,7 +63,9 @@ const CardElement = props => {
           onMouseDown={e => handleMouseDown(e)}
           onMouseUp={e => handleMouseUp(e)}
         >
-          <p>Cool cardss</p>,
+          {console.log(props.data)}
+          <p>{props.data.theme}</p>
+          <p>{props.data.text}</p>
         </Card>
       </CardContainer>
     </Draggable>
