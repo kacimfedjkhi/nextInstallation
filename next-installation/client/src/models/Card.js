@@ -8,7 +8,6 @@ class Card {
     this.locations = locations;
     this.answers = answers;
     this.uniqueId = uniqueId;
-    this.pin = pin;
   }
 
   setId = id => (this.id = id);
@@ -17,7 +16,6 @@ class Card {
   setLocations = locations => (this.locations = locations);
   setAnswers = answers => (this.answers = answers);
   setUniqueId = uniqueId => (this.uniqueId = uniqueId);
-  setPin = pin => (this.pin = pin);
 
   remove = () => {
     this.remove(this);
@@ -30,7 +28,6 @@ class Card {
     this.locations(values.locations);
     this.answers(values.answers);
     this.setUniqueId(values.uniqueId);
-    this.setPin(values.pin);
   };
 }
 
@@ -41,14 +38,12 @@ decorate(Card, {
   locations: observable,
   answers: observable,
   uniqueId: observable,
-  pin: observable,
   setId: action,
   setTheme: action,
   setText: action,
   setLocations: action,
   setAnswers: action,
-  setUniqueId: action,
-  setPin: action
+  setUniqueId: action
 });
 
 export default Card;

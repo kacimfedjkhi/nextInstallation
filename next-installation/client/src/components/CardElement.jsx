@@ -25,13 +25,30 @@ const CardElement = (props, { history }) => {
     transform: rotate(${getRotation}deg);
   `;
 
-  const handleDragCard = e => {
-    console.log(e.target);
-    e.target.parentElement.style.zIndex = "999";
+  let currentX, currentY, newX, newY;
+
+  // const handleDragCard = e => {
+  //   e.target.parentElement.style.zIndex = "999";
+  // };
+
+  const handleMouseDown = e => {
+    currentX = e.clientX;
+    currentY = e.clientY;
   };
 
-  const handleClickCard = e => {
-    console.log(e);
+  const handleMouseUp = e => {
+    newX = e.clientX;
+    newY = e.clientY;
+
+    console.log(Math.abs(currentX - newX));
+    const changeX = Math.abs(currentX - newX);
+    const changeY = Math.abs(currentY - newY);
+
+    if (changeX > 5 && changeY > 5) {
+      console.log("wow drag");
+    } else {
+      console.log("ow click");
+    }
   };
 
   return (
@@ -39,10 +56,13 @@ const CardElement = (props, { history }) => {
       bounds="parent"
       axis="both"
       defaultPosition={{ x: props.xPos, y: props.yPos }}
-      onStart={handleDragCard}
     >
       <CardContainer>
-        <Card id="23" onClick={e => handleClickCard(e)}>
+        <Card
+          id="23"
+          onMouseDown={e => handleMouseDown(e)}
+          onMouseUp={e => handleMouseUp(e)}
+        >
           <p>Cool cardss</p>,
         </Card>
       </CardContainer>

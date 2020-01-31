@@ -27,7 +27,7 @@ app.use(bodyparser.json());
 require(`./app/routes/installation.routes.js`)(app);
 
 app.get(`*`, (req, res) => {
-  res.sendFile(path.resolve(__dirname, `../client/build`, `index.html`));
+  res.sendFile(path.resolve(__dirname, `../client/public`, `index.html`));
 });
 
 const server = http.createServer(app);

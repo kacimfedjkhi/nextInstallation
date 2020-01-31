@@ -4,9 +4,9 @@ import io from "socket.io-client";
 class UIStore {
   selectedAction = "";
   setupStep = 0;
-  adminLanguage = "";
+  adminLanguage = "nl";
 
-  userLanguage = "";
+  userLanguage = "nl";
   locationType = "cultuurhuis";
   selectedLocation = "";
 

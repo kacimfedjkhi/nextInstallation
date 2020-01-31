@@ -1,16 +1,19 @@
 import { decorate, observable, action } from "mobx";
+import Api from "../api/index";
 
 class OpenStore {
   cards = [];
 
   constructor(rootStore) {
     this.rootStore = rootStore;
+    this.api = new Api(`cards`);
     this.socket = rootStore.uiStore.socket;
-    this.socket.on(`getCard`, this.getCards);
+    this.getCards();
+    //this.socket.on(`getCard`, this.getCards);
   }
 
   getCards = () => {
-    console.log("kaartje ontvangen!! hihi tof");
+    this.api.getAllCards();
   };
 }
 

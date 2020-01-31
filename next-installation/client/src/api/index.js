@@ -5,7 +5,10 @@ class Api {
   }
 
   getAllCards = async () => {
-    //get cards from db
+    console.log("in getApi");
+
+    const r = await fetch(`/api/${this.entity}`, this.getOptions(`get`));
+    return await r.json();
   };
 
   createCard = async obj => {
@@ -22,7 +25,7 @@ class Api {
         "content-type": `application/json`
       }
     };
-    console.log(options);
+    console.log("in getOptions", options);
 
     if (body) {
       options.body = JSON.stringify(body);

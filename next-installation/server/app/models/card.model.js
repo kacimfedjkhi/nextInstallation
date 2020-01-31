@@ -9,8 +9,7 @@ const CardSchema = mongoose.Schema(
     text: String,
     locations: [String],
     answers: [String],
-    uniqueId: String,
-    pin: Number
+    uniqueId: String
   },
   {
     timestamps: true

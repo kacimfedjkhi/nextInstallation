@@ -9,7 +9,6 @@ class WriteStore {
   theme = "";
   message = "";
   uniqueId = "";
-  pin = 1997;
 
   inputMethod = "templates";
 
@@ -73,16 +72,9 @@ class WriteStore {
   };
 
   sendCard = async data => {
-    const card = new Card(
-      this.theme,
-      this.message,
-      this.rootStore.uiStore.selectedLocation,
-      [],
-      this.uniqueId,
-      this.pin
-    );
+    const card = new Card(this.theme, this.message, [], [], this.uniqueId);
     await this.rootStore.openStore.cards.push(card);
-    //this.api.createCard(card);
+    this.api.createCard(card);
     console.log(this.socket);
 
     this.socket.emit(`sendCard`, card);
