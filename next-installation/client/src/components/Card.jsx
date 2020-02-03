@@ -31,22 +31,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Card = ({ writeStore }) => {
+const Card = props => {
   const classes = useStyles();
-  const selectedTheme = writeStore.theme;
-  const message = writeStore.message;
+  const selectedTheme = props.theme;
+  const message = props.message;
 
   return (
     <>
-      <ReactCardFlip
-        isFlipped={writeStore.cardFlipped}
-        flipDirection="vertical"
-      >
+      <ReactCardFlip isFlipped={props.isFlipped} flipDirection="vertical">
         <div className={classes.front}>
           <Paper elevation={3}>
             <h3>Uw kaartje</h3>
-            {selectedTheme ? <p>{selectedTheme}</p> : null}
-            {message ? <p>{message}</p> : null}
+            {props.theme ? <p>{props.theme}</p> : null}
+            {props.message ? <p>{props.message}</p> : null}
+            {props.answers ? <div>{props.answers}</div> : null}
           </Paper>
         </div>
         <div className={classes.back}>
@@ -55,11 +53,10 @@ const Card = ({ writeStore }) => {
               src="https://images.unsplash.com/photo-1514918956881-335d75e3c0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
               alt=""
             />
-            <p>THISISTHEBACK</p>
           </Paper>
         </div>
       </ReactCardFlip>
-      <Button onClick={writeStore.handleFlipCard}>flip</Button>
+      <Button onClick={props.writeStore.handleFlipCard}>flip</Button>
     </>
   );
 };

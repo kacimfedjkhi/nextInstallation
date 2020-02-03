@@ -1,11 +1,14 @@
 import React from "react";
 import Draggable from "react-draggable";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
+import { ROUTES } from "../constants/index";
+import { inject, observer } from "mobx-react";
 
 const CardElement = props => {
   const getRotation = () => {
-    let rotation = Math.floor(Math.random() * 11); // this will get a number between 1 and 99;
-    rotation *= Math.floor(Math.random() * 2) === 1 ? 1 : -1; // this will add minus sign in 50% of cases
+    let rotation = Math.floor(Math.random() * 11);
+    rotation *= Math.floor(Math.random() * 2) === 1 ? 1 : -1;
 
     return rotation;
   };
@@ -44,10 +47,13 @@ const CardElement = props => {
     const changeX = Math.abs(currentX - newX);
     const changeY = Math.abs(currentY - newY);
 
-    if (changeX > 5 && changeY > 5) {
+    if (changeX > 3 && changeY > 3) {
       console.log("wow drag");
     } else {
       console.log("ow click");
+
+      props.store.selectedCard = e.currentTarget.id;
+      props.history.push(ROUTES.answer);
     }
   };
 
@@ -60,7 +66,7 @@ const CardElement = props => {
     >
       <CardContainer>
         <Card
-          id="23"
+          id={props.data.uniqueId}
           onMouseDown={e => handleMouseDown(e)}
           onMouseUp={e => handleMouseUp(e)}
         >
@@ -73,4 +79,4 @@ const CardElement = props => {
   );
 };
 
-export default CardElement;
+export default withRouter(observer(CardElement));

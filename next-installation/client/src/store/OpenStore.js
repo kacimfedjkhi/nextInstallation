@@ -4,6 +4,7 @@ import Card from "../models/Card";
 
 class OpenStore {
   cards = [];
+  selectedCard = "LPcVmOdZ9";
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -32,11 +33,23 @@ class OpenStore {
     //const card = new Card(this.rootStore);
     this.cards.push(card);
   };
+
+  showCard = id => {
+    const card = this.cards.filter(obj => {
+      return obj.uniqueId === this.selectedCard;
+    });
+
+    console.log(card[0]);
+
+    return card[0];
+  };
 }
 
 decorate(OpenStore, {
   cards: observable,
-  getCards: action
+  selectedCard: observable,
+  getCards: action,
+  showCard: action
 });
 
 export default OpenStore;

@@ -21,10 +21,15 @@ module.exports = server => {
 
         //const r = await card.save();
 
-        io.emit(`getCard`, card);
+        io.to(connections[1].id).emit(`getCard`, card);
       } catch (err) {
         return err;
       }
+    });
+
+    socket.on("disconnect", () => {
+      connections.splice(connections.indexOf(socket), 1);
+      console.log(`Disconnected: ${connections.length} sockets connected`);
     });
   });
 };

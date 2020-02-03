@@ -6,6 +6,7 @@ import BottomButtons from "../components/BottomButtons";
 import Card from "../components/Card";
 import ThemesList from "../components/Themes";
 import MessageInput from "../components/MessageInput";
+import OpenStore from "../store/OpenStore";
 
 const Write = ({ writeStore }) => {
   const activeStep = writeStore.activeStep;
@@ -27,7 +28,12 @@ const Write = ({ writeStore }) => {
       <Steps />
       <h2>{writeStore.getStepTitle(activeStep)}</h2>
       {renderInput(activeStep)}
-      <Card />
+      <Card
+        isFlipped={writeStore.cardFlipped}
+        theme={writeStore.theme}
+        message={writeStore.message}
+        store={writeStore}
+      />
       <BottomButtons />
     </>
   );

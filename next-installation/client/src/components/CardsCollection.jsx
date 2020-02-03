@@ -33,7 +33,13 @@ const CardsCollection = ({ openStore }) => {
   return (
     <StyledSpace>
       {cards.map(card => (
-        <CardElement xPos={getXpos()} yPos={getYpos()} data={card} />
+        <CardElement
+          key={card.uniqueId}
+          xPos={getXpos()}
+          yPos={getYpos()}
+          data={card}
+          store={openStore}
+        />
       ))}
     </StyledSpace>
   );
