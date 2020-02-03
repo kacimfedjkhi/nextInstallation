@@ -12,7 +12,7 @@ class WriteStore {
 
   inputMethod = "templates";
 
-  cardFlipped = true;
+  cardFlipped = false;
 
   constructor(rootStore) {
     this.rootStore = rootStore;

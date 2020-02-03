@@ -11,12 +11,12 @@ const Div = styled.div`
   right: 20px;
 `;
 
-const KeyboardInput = ({ writeStore }) => {
+const KeyboardInput = props => {
   const [layout, setLayout] = useState("default");
   const keyboard = useRef();
 
   const onChange = input => {
-    writeStore.message = input;
+    props.store.message = input;
 
     console.log("Input changed", input);
   };

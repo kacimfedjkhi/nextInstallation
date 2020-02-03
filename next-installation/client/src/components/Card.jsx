@@ -45,6 +45,7 @@ const Card = props => {
             {props.theme ? <p>{props.theme}</p> : null}
             {props.message ? <p>{props.message}</p> : null}
             {props.answers ? <div>{props.answers}</div> : null}
+            {props.openStore ? <p>{props.openStore.message}</p> : null}
           </Paper>
         </div>
         <div className={classes.back}>

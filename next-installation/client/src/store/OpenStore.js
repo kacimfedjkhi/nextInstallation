@@ -5,6 +5,8 @@ import Card from "../models/Card";
 class OpenStore {
   cards = [];
   selectedCard = "LPcVmOdZ9";
+  message = "";
+  answer = false;
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -34,12 +36,10 @@ class OpenStore {
     this.cards.push(card);
   };
 
-  showCard = id => {
+  showCard = () => {
     const card = this.cards.filter(obj => {
       return obj.uniqueId === this.selectedCard;
     });
-
-    console.log(card[0]);
 
     return card[0];
   };
@@ -48,6 +48,8 @@ class OpenStore {
 decorate(OpenStore, {
   cards: observable,
   selectedCard: observable,
+  answer: observable,
+  message: observable,
   getCards: action,
   showCard: action
 });

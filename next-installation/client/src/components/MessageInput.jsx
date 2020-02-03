@@ -52,7 +52,7 @@ const MessageInput = ({ writeStore }) => {
           onClick={() => handleClick(message)}
         />
       ))} */}
-      {input === "keyboard" ? <Keyboard /> : null}
+      {input === "keyboard" ? <Keyboard store={writeStore} /> : null}
     </>
   );
 };
