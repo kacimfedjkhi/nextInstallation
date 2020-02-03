@@ -6,7 +6,6 @@ import BottomButtons from "../components/BottomButtons";
 import Card from "../components/Card";
 import ThemesList from "../components/Themes";
 import MessageInput from "../components/MessageInput";
-import OpenStore from "../store/OpenStore";
 
 const Write = ({ writeStore }) => {
   const activeStep = writeStore.activeStep;

@@ -31,3 +31,20 @@ exports.findAll = async (req, res) => {
     res.status(500).send({ err: err.card || "error" });
   }
 };
+
+exports.answerCard = async (req, res) => {
+  try {
+    console.log("KAKAAA KAKAAA", req.body);
+
+    Card.update(
+      { _id: req.body.id },
+      {
+        $set: {
+          answers: req.body.answers
+        }
+      }
+    ).then(r => console.log(r));
+  } catch (err) {
+    console.log("something went wrong", err);
+  }
+};

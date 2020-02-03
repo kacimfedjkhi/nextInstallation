@@ -3,7 +3,7 @@ import Draggable from "react-draggable";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 import { ROUTES } from "../constants/index";
-import { inject, observer } from "mobx-react";
+import { observer } from "mobx-react";
 
 const CardElement = props => {
   const getRotation = () => {

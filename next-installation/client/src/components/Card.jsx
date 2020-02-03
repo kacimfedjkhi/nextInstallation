@@ -33,8 +33,6 @@ const useStyles = makeStyles(theme => ({
 
 const Card = props => {
   const classes = useStyles();
-  const selectedTheme = props.theme;
-  const message = props.message;
 
   return (
     <>
@@ -44,7 +42,9 @@ const Card = props => {
             <h3>Uw kaartje</h3>
             {props.theme ? <p>{props.theme}</p> : null}
             {props.message ? <p>{props.message}</p> : null}
-            {props.answers ? <div>{props.answers}</div> : null}
+            {props.answers
+              ? props.answers.map(answer => <li key={answer}>{answer}</li>)
+              : null}
             {props.openStore ? <p>{props.openStore.message}</p> : null}
           </Paper>
         </div>

@@ -26,7 +26,7 @@ class Card {
     this.setTheme(values.theme);
     this.setText(values.text);
     this.setLocations(values.locations);
-    this.setAnswers(values.answers);
+    this.setAnswers(values.answers); //answers model!!
     this.setUniqueId(values.uniqueId);
   };
 }

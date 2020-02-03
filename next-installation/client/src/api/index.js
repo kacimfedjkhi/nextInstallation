@@ -18,6 +18,14 @@ class Api {
     return await r.json();
   };
 
+  answerCard = async obj => {
+    const r = await fetch(
+      `/api/${this.entity}/${obj.id}`,
+      this.getOptions(`put`, obj)
+    );
+    return await r.json();
+  };
+
   getOptions = (method, body = null) => {
     const options = {
       method: method.toUpperCase(),

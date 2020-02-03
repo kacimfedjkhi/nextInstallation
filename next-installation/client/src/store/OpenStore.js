@@ -43,6 +43,15 @@ class OpenStore {
 
     return card[0];
   };
+
+  answerCard = id => {
+    const card = this.cards.filter(obj => {
+      return obj.id === id;
+    });
+
+    card[0].answers.push(this.message);
+    this.api.answerCard(card[0]);
+  };
 }
 
 decorate(OpenStore, {

@@ -17,6 +17,7 @@ const Answer = ({ openStore, writeStore }) => {
 
   const handleAnswerCard = () => {
     console.log("answer");
+    openStore.answerCard(card.id);
   };
 
   return (
