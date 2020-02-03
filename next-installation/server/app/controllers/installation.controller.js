@@ -35,12 +35,14 @@ exports.findAll = async (req, res) => {
 exports.answerCard = async (req, res) => {
   try {
     const newAnswer = req.body.answers[req.body.answers.length - 1];
+    const newLocation = req.body.locations[req.body.locations.length - 1];
 
     Card.updateOne(
       { _id: req.body.id },
       {
         $push: {
-          answers: newAnswer
+          answers: newAnswer,
+          locations: newLocation
         }
       }
     ).then(r => console.log(r));

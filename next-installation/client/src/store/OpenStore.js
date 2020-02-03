@@ -55,13 +55,18 @@ class OpenStore {
   };
 
   answerCard = id => {
-    const card = this.cards.filter(obj => {
-      return obj.id === id;
-    });
+    if (this.message !== "") {
+      const card = this.cards.filter(obj => {
+        return obj.id === id;
+      });
 
-    card[0].answers.push(this.message);
-    this.api.answerCard(card[0]);
-    this.socket.emit(`saveAnswer`, card[0]);
+      if (this.rootStore.uiStore.selectedLocation !== "") {
+        card[0].locations.push(this.rootStore.uiStore.selectedLocation);
+      }
+
+      this.api.answerCard(card[0]);
+      this.socket.emit(`saveAnswer`, card[0]);
+    }
   };
 
   emptyValues = () => {
