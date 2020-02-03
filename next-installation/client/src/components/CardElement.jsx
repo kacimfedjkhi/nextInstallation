@@ -27,9 +27,9 @@ const CardElement = props => {
 
   let currentX, currentY, newX, newY;
 
-  // const handleDragCard = e => {
-  //   e.target.parentElement.style.zIndex = "999";
-  // };
+  const handleDragCard = e => {
+    e.target.parentElement.style.zIndex = "999";
+  };
 
   const handleMouseDown = e => {
     currentX = e.clientX;
@@ -56,6 +56,7 @@ const CardElement = props => {
       bounds="parent"
       axis="both"
       defaultPosition={{ x: props.xPos, y: props.yPos }}
+      onDrag={handleDragCard}
     >
       <CardContainer>
         <Card
