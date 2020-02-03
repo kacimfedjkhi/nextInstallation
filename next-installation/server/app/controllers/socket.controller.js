@@ -27,6 +27,22 @@ module.exports = server => {
       }
     });
 
+    socket.on(`saveAnswer`, async data => {
+      try {
+        const card = new Card({
+          theme: data.theme,
+          text: data.text,
+          locations: data.locations,
+          answers: data.answers,
+          uniqueId: data.uniqueId
+        });
+
+        io.emit(`updateCard`, card);
+      } catch (err) {
+        return err;
+      }
+    });
+
     socket.on("disconnect", () => {
       connections.splice(connections.indexOf(socket), 1);
       console.log(`Disconnected: ${connections.length} sockets connected`);

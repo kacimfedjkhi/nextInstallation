@@ -14,7 +14,18 @@ class OpenStore {
     this.socket = rootStore.uiStore.socket;
     this.getCards();
     this.socket.on(`getCard`, this.addCard);
+    this.socket.on(`updateCard`, this.updateCard);
   }
+
+  updateCard = newData => {
+    console.log("test sokket update", newData);
+
+    const card = this.cards.filter(obj => {
+      return obj.uniqueId === newData.uniqueId;
+    });
+
+    card[0].answers = newData.answers;
+  };
 
   getCards = () => {
     this.api.getAllCards().then(newCards => {
@@ -31,7 +42,6 @@ class OpenStore {
   };
 
   addCard = card => {
-    console.log("SOKKET TEST", card);
     //const card = new Card(this.rootStore);
     this.cards.push(card);
   };
@@ -51,6 +61,11 @@ class OpenStore {
 
     card[0].answers.push(this.message);
     this.api.answerCard(card[0]);
+    this.socket.emit(`saveAnswer`, card[0]);
+  };
+
+  emptyValues = () => {
+    this.message = "";
   };
 }
 
