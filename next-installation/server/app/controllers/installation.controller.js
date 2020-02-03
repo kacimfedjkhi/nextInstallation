@@ -34,13 +34,13 @@ exports.findAll = async (req, res) => {
 
 exports.answerCard = async (req, res) => {
   try {
-    console.log("KAKAAA KAKAAA", req.body);
+    const newAnswer = req.body.answers[req.body.answers.length - 1];
 
-    Card.update(
+    Card.updateOne(
       { _id: req.body.id },
       {
-        $set: {
-          answers: req.body.answers
+        $push: {
+          answers: newAnswer
         }
       }
     ).then(r => console.log(r));
