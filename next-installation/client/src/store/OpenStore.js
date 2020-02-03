@@ -60,7 +60,9 @@ class OpenStore {
         return obj.id === id;
       });
 
-      if (this.rootStore.uiStore.selectedLocation !== "") {
+      card[0].answers.push(this.message);
+
+      if (this.rootStore.uiStore.selectedLocation) {
         card[0].locations.push(this.rootStore.uiStore.selectedLocation);
       }
 

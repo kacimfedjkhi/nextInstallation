@@ -28,6 +28,7 @@ const Answer = ({ openStore, writeStore }) => {
         theme={card.theme}
         message={card.text}
         answers={card.answers}
+        locations={card.locations}
         writeStore={writeStore}
         openStore={openStore}
       />
