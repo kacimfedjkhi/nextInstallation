@@ -13,7 +13,7 @@ class OpenStore {
     this.api = new Api(`cards`);
     this.socket = rootStore.uiStore.socket;
     this.getCards();
-    this.socket.on(`getCard`, this.getCards);
+    this.socket.on(`getCard`, this._addCard);
     this.socket.on(`updateCard`, this.updateCard);
   }
 
@@ -36,7 +36,7 @@ class OpenStore {
   };
 
   _addCard = values => {
-    console.log("in add func");
+    console.log("in add func", values);
 
     const card = new Card(this.rootStore);
     card.updateFromServer(values);
