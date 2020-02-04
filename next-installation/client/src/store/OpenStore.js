@@ -64,11 +64,16 @@ class OpenStore {
 
       if (this.rootStore.uiStore.selectedLocation) {
         card[0].locations.push(this.rootStore.uiStore.selectedLocation);
+      } else {
+        card[0].locations.push("unknown location");
       }
 
-      this.api.answerCard(card[0]);
-      this.socket.emit(`saveAnswer`, card[0]);
+      console.log(card[0]);
+
+      // this.api.answerCard(card[0]);
+      // this.socket.emit(`saveAnswer`, card[0]);
     }
+    this.emptyValues();
   };
 
   emptyValues = () => {

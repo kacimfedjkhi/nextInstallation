@@ -79,6 +79,7 @@ class WriteStore {
       this.message,
       this.rootStore.uiStore.selectedLocation,
       [],
+      [],
       this.uniqueId
     );
     await this.rootStore.openStore.cards.push(card);

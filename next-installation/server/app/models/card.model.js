@@ -7,6 +7,7 @@ const CardSchema = mongoose.Schema(
     id: ObjectId,
     theme: String,
     text: String,
+    locationCreated: String,
     locations: [String],
     answers: [String],
     uniqueId: String

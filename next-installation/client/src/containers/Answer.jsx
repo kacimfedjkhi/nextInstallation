@@ -32,13 +32,15 @@ const Answer = ({ openStore, writeStore }) => {
         writeStore={writeStore}
         openStore={openStore}
       />
-      <Link to={ROUTES.open}>
-        <Button>Dit kaartje terug gooien</Button>
-      </Link>
       {!openStore.answer ? (
-        <Button variant="contained" onClick={handleClickAnswer}>
-          Dit kaartje beantwoorden
-        </Button>
+        <>
+          <Link to={ROUTES.open}>
+            <Button>Dit kaartje terug gooien</Button>
+          </Link>
+          <Button variant="contained" onClick={handleClickAnswer}>
+            Dit kaartje beantwoorden
+          </Button>
+        </>
       ) : null}
 
       <Button onClick={handleAnswerCard}>Klaar</Button>
