@@ -13,7 +13,7 @@ class OpenStore {
     this.api = new Api(`cards`);
     this.socket = rootStore.uiStore.socket;
     this.getCards();
-    this.socket.on(`getCard`, this.addCard);
+    this.socket.on(`getCard`, this.getCards);
     this.socket.on(`updateCard`, this.updateCard);
   }
 
@@ -36,6 +36,8 @@ class OpenStore {
   };
 
   _addCard = values => {
+    console.log("in add func");
+
     const card = new Card(this.rootStore);
     card.updateFromServer(values);
     runInAction(() => this.cards.push(card));
@@ -68,12 +70,12 @@ class OpenStore {
         card[0].locations.push("unknown location");
       }
 
-      console.log(card[0]);
+      //console.log(card[0]);
 
-      // this.api.answerCard(card[0]);
-      // this.socket.emit(`saveAnswer`, card[0]);
+      this.api.answerCard(card[0]);
+      this.socket.emit(`saveAnswer`, card[0]);
+      this.emptyValues();
     }
-    this.emptyValues();
   };
 
   emptyValues = () => {

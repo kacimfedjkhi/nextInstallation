@@ -22,7 +22,7 @@ module.exports = server => {
 
         //const r = await card.save();
 
-        io.to(connections[1].id).emit(`getCard`, card);
+        io.emit(`getCard`, card);
       } catch (err) {
         return err;
       }
