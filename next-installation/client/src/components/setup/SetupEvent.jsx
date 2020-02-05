@@ -5,32 +5,28 @@ import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
+import styled from "styled-components";
+
 const SetupEvent = ({ uiStore }) => {
   return (
     <section>
-      <FormControlLabel
-        control={
-          <Checkbox
-            onChange={e => uiStore.toggleCheckedEvent(e)}
-            value="checkedA"
-          />
-        }
-        label={
-          uiStore.adminLanguage === "nl" ? content.nl.event : content.fr.event
-        }
-      />
-      <p>
-        {uiStore.adminLanguage === "nl"
-          ? content.nl.eventTxt
-          : content.fr.eventTxt}
-      </p>
+      <Label htmlFor="event">
+        <input
+          name="event"
+          id="event"
+          type="checkbox"
+          onChange={uiStore.toggleCheckedEvent}
+        />
+        {uiStore.adminLanguage === "nl" ? content.nl.event : content.fr.event}
+      </Label>
+
       {uiStore.event ? (
         <>
-          <p>
+          <EventTxt>
             {uiStore.adminLanguage === "nl"
               ? content.nl.eventName
               : content.fr.eventName}
-          </p>
+          </EventTxt>
           <TextField
             label={
               uiStore.adminLanguage === "nl"
@@ -43,7 +39,13 @@ const SetupEvent = ({ uiStore }) => {
             onChange={e => uiStore.addEventName(e.currentTarget.value)}
           />
         </>
-      ) : null}
+      ) : (
+        <EventTxt>
+          {uiStore.adminLanguage === "nl"
+            ? content.nl.eventTxt
+            : content.fr.eventTxt}
+        </EventTxt>
+      )}
     </section>
   );
 };
@@ -64,5 +66,19 @@ const content = {
     eventNameLabel: "Nom d'evenement"
   }
 };
+
+const EventTxt = styled.p`
+  font-size: 2rem;
+  max-width: 40rem;
+  color: #bababa;
+  font-weight: 600;
+  padding-top: 1rem;
+`;
+
+const Label = styled.label`
+  font-size: 2.5rem;
+  color: #8089ce;
+  font-weight: 600;
+`;
 
 export default inject("uiStore")(observer(SetupEvent));

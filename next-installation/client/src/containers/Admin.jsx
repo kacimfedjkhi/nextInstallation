@@ -108,7 +108,7 @@ const StyledPage = styled.section`
 `;
 
 const StyledTitle = styled.h1`
-  font-size: 40px;
+  font-size: 4rem;
   font-weight: bold;
   color: #8089ce;
   text-align: center;
