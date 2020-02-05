@@ -25,13 +25,6 @@ function App() {
         <Route path={ROUTES.admin} component={Admin} />
         <Route path={ROUTES.setup} component={Setup} />
         <Route path={ROUTES.sent} component={Sent} />
-        {/* <Route
-            path={ROUTES.detail}
-            render={({ match }) => {
-              const { id } = match.params;
-              return <PostDetail id={id} />;
-            }}
-          /> */}
       </Switch>
     </main>
   );
