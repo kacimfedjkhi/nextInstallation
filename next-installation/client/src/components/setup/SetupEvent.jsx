@@ -6,67 +6,62 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 
 const SetupEvent = ({ uiStore }) => {
-  if (uiStore.adminLanguage === "nl") {
-    return (
-      <section>
-        <FormControlLabel
-          control={
-            <Checkbox
-              onChange={e => uiStore.toggleCheckedEvent(e)}
-              value="checkedA"
-            />
-          }
-          label="Er is momenteel een evenement gaande op deze locatie"
-        />
-        <p>
-          Op deze manier kan gedetailleerder weergegeven worden waar de kaartjes
-          zich bevinden.
-        </p>
-        {uiStore.event ? (
-          <>
-            <p>Voer de naam van het evenement in</p>
-            <TextField
-              label="Naam event"
-              margin="normal"
-              variant="outlined"
-              style={{ width: 300 }}
-              onChange={e => uiStore.addEventName(e.currentTarget.value)}
-            />
-          </>
-        ) : null}
-      </section>
-    );
-  } else {
-    return (
-      <section>
-        <FormControlLabel
-          control={
-            <Checkbox
-              onChange={e => uiStore.toggleCheckedEvent(e)}
-              value="event"
-            />
-          }
-          label="
-          Il y a actuellement un événement à cet endroit"
-        />
-        <p>
-          Il est ainsi possible de montrer plus en détail où les cartes postales
-          sont localisés.
-        </p>
-        {uiStore.event ? (
-          <>
-            <p>Inserez le nom d'événement</p>
-            <TextField
-              label="Nom d'événement"
-              margin="normal"
-              variant="outlined"
-              style={{ width: 300 }}
-              onChange={e => uiStore.addEventName(e.currentTarget.value)}
-            />
-          </>
-        ) : null}
-      </section>
-    );
+  return (
+    <section>
+      <FormControlLabel
+        control={
+          <Checkbox
+            onChange={e => uiStore.toggleCheckedEvent(e)}
+            value="checkedA"
+          />
+        }
+        label={
+          uiStore.adminLanguage === "nl" ? content.nl.event : content.fr.event
+        }
+      />
+      <p>
+        {uiStore.adminLanguage === "nl"
+          ? content.nl.eventTxt
+          : content.fr.eventTxt}
+      </p>
+      {uiStore.event ? (
+        <>
+          <p>
+            {uiStore.adminLanguage === "nl"
+              ? content.nl.eventName
+              : content.fr.eventName}
+          </p>
+          <TextField
+            label={
+              uiStore.adminLanguage === "nl"
+                ? content.nl.eventNameLabel
+                : content.fr.eventNameLabel
+            }
+            margin="normal"
+            variant="outlined"
+            style={{ width: 300 }}
+            onChange={e => uiStore.addEventName(e.currentTarget.value)}
+          />
+        </>
+      ) : null}
+    </section>
+  );
+};
+
+const content = {
+  nl: {
+    event: "er is momenteel een event gaande op deze locatie",
+    eventTxt:
+      "Op deze manier krijgt de gebruiker meer informatie over het evenement waar zijn of haar kaartje zich bevindt.",
+    eventName: "Voer hieronder de naam van het evenement in",
+    eventNameLabel: "Eventnaam"
+  },
+  fr: {
+    event: "Il y a actuellement un événement à cet endroit",
+    eventTxt:
+      "Il est ainsi possible de montrer plus en détail où les cartes postales sont localisés.",
+    eventName: "Saisissez le nom de l'événement ci-dessous",
+    eventNameLabel: "Nom d'evenement"
   }
 };
 

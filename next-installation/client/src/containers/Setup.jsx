@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 import { Link } from "react-router-dom";
 
@@ -10,22 +10,49 @@ import SetupEvent from "../components/setup/SetupEvent";
 import SetupUserLanguage from "../components/setup/SetupUserLanguage";
 
 const Setup = ({ uiStore }) => {
+  const [count, setCount] = useState(0);
+
+  const handleClickSetup = () => {
+    setCount(count + 1);
+  };
   return (
     <>
-      <h1>Installation setup</h1>
-      <SetupUserLanguage />
-      <section>
-        {uiStore.adminLanguage === "nl"
-          ? "Waar staat deze installatie"
-          : "Où se trouve cette installation ?"}
-      </section>
-      <SetupLocation />
-      <SetupEvent />
-      <Link to={ROUTES.home}>
-        <Button variant="contained">Start</Button>
-      </Link>
+      {count === 0 ? <SetupUserLanguage /> : null}
+      {count === 1 ? (
+        <>
+          <SetupLocation />
+          <SetupEvent />
+        </>
+      ) : null}
+
+      {count === 1 ? (
+        <Link to={ROUTES.home}>
+          <Button variant="contained" onClick={handleClickSetup}>
+            {uiStore.adminLanguage === "nl"
+              ? content.nl.startBtn
+              : content.fr.startBtn}
+          </Button>
+        </Link>
+      ) : (
+        <Button variant="contained" onClick={handleClickSetup}>
+          {uiStore.adminLanguage === "nl"
+            ? content.nl.btnTxt
+            : content.fr.btnTxt}
+        </Button>
+      )}
     </>
   );
+};
+
+const content = {
+  nl: {
+    btnTxt: "De installatie verder configureren",
+    startBtn: "De installatie opstarten"
+  },
+  fr: {
+    btnTxt: "Configurer davantage l'installation",
+    startBtn: "Mise en service de l'installation"
+  }
 };
 
 Setup.propTypes = {

@@ -6,26 +6,46 @@ import Autocomplete from "@material-ui/lab/Autocomplete";
 import TextField from "@material-ui/core/TextField";
 
 const SetupLocation = ({ uiStore }) => {
-  if (uiStore.adminLanguage === "nl") {
-    return (
+  return (
+    <>
+      <section>
+        {uiStore.adminLanguage === "nl" ? (
+          <h2>
+            <span>waar</span>staat deze isntallatie?
+          </h2>
+        ) : (
+          <h2>
+            <span>Où</span> se trouve cette installation ?
+          </h2>
+        )}
+        <p>
+          {uiStore.adminLanguage === "nl"
+            ? content.nl.installationTxt
+            : content.fr.installationTxt}
+        </p>
+      </section>
       <section>
         <Button
-          variant={
-            uiStore.locationType === "cultuurhuis" ? "contained" : "text"
-          }
-          onClick={() => uiStore.changeLocationType("cultuurhuis")}
+          variant={uiStore.locationType === "culture" ? "contained" : "text"}
+          onClick={() => uiStore.changeLocationType("culture")}
         >
-          Cultuurhuis
+          {uiStore.adminLanguage === "nl"
+            ? content.nl.locationTypeCulture
+            : content.fr.locationTypeCulture}
         </Button>
         <Button
           variant={uiStore.locationType === "openbaar" ? "contained" : "text"}
-          onClick={() => uiStore.changeLocationType("openbaar")}
+          onClick={() => uiStore.changeLocationType("public")}
         >
           Openbare plaats
         </Button>
-        {uiStore.locationType === "cultuurhuis" ? (
+        {uiStore.locationType === "culture" ? (
           <>
-            <p>Voer de naam van een cultuurhuis in</p>
+            <p>
+              {uiStore.adminLanguage === "nl"
+                ? content.nl.culturehouseLocation
+                : content.fr.culturehouseLocation}
+            </p>
             <Autocomplete
               id="free-solo-demo"
               freeSolo
@@ -34,7 +54,11 @@ const SetupLocation = ({ uiStore }) => {
               renderInput={params => (
                 <TextField
                   {...params}
-                  label="Cultuurhuis"
+                  label={
+                    uiStore.adminLanguage === "nl"
+                      ? content.nl.locationTypeCulture
+                      : content.fr.locationTypeCulture
+                  }
                   margin="normal"
                   variant="outlined"
                   style={{ width: 300 }}
@@ -47,9 +71,17 @@ const SetupLocation = ({ uiStore }) => {
           </>
         ) : (
           <>
-            <p>Geef de locatie van de installatie op</p>
+            <p>
+              {uiStore.adminLanguage === "nl"
+                ? content.nl.publicLocation
+                : content.fr.publicLocation}
+            </p>
             <TextField
-              label="Openbare plaats"
+              label={
+                uiStore.adminLanguage === "nl"
+                  ? content.nl.locationTypePublic
+                  : content.fr.locationTypePublic
+              }
               margin="normal"
               variant="outlined"
               style={{ width: 300 }}
@@ -60,62 +92,26 @@ const SetupLocation = ({ uiStore }) => {
           </>
         )}
       </section>
-    );
-  } else {
-    return (
-      <section>
-        <Button
-          variant={
-            uiStore.locationType === "cultuurhuis" ? "contained" : "text"
-          }
-          onClick={() => uiStore.changeLocationType("cultuurhuis")}
-        >
-          centre culturel
-        </Button>
-        <Button
-          variant={uiStore.locationType === "openbaar" ? "contained" : "text"}
-          onClick={() => uiStore.changeLocationType("openbaar")}
-        >
-          place public
-        </Button>
-        {uiStore.locationType === "cultuurhuis" ? (
-          <>
-            <p>Inserez le nom du centre culturel</p>
-            <Autocomplete
-              id="free-solo-demo"
-              freeSolo
-              options={houses}
-              onChange={(event, value) => uiStore.handleChangeLocation(value)}
-              renderInput={params => (
-                <TextField
-                  {...params}
-                  label="Centre culturel"
-                  margin="normal"
-                  variant="outlined"
-                  style={{ width: 300 }}
-                  onChange={e =>
-                    uiStore.handleChangeLocation(e.currentTarget.value)
-                  }
-                />
-              )}
-            />
-          </>
-        ) : (
-          <>
-            <p>Inserez la place d'installation</p>
-            <TextField
-              label="Place public"
-              margin="normal"
-              variant="outlined"
-              style={{ width: 300 }}
-              onChange={e =>
-                uiStore.handleChangeLocation(e.currentTarget.value)
-              }
-            />
-          </>
-        )}
-      </section>
-    );
+    </>
+  );
+};
+
+const content = {
+  nl: {
+    installationTxt:
+      "Vul deze gegevens zo volledig mogelijk in om de gebruiker voldoende informatie te bezorgen.",
+    locationTypeCulture: "Cultuurhuis",
+    culturehouseLocation: "Voer de naam van een cultuurhuis in.",
+    locationTypePublic: "openbare plaats",
+    publicLocation: "Voer de naam van uw locatie in."
+  },
+  fr: {
+    installationTxt:
+      "Remplissez ces données aussi complètement que possible afin de fournir à l'utilisateur des informations suffisantes.",
+    locationTypeCulture: "maison de la culture",
+    culturehouseLocation: "Entrez le nom d'une maison de la culture.",
+    locationTypePublic: "place public",
+    publicLocation: "Entrez le nom de votre location."
   }
 };
 

@@ -7,7 +7,7 @@ class UIStore {
   adminLanguage = "nl";
 
   userLanguage = "nl";
-  locationType = "cultuurhuis";
+  locationType = "culture";
   selectedLocation = "";
 
   event = false;
@@ -74,16 +74,7 @@ class UIStore {
   };
 
   changeLocationType = value => {
-    switch (value) {
-      case "cultuurhuis":
-        this.locationType = value;
-        break;
-      case "openbaar":
-        this.locationType = value;
-        break;
-      default:
-        return value;
-    }
+    this.locationType = value;
   };
 
   toggleCheckedEvent = e => {

@@ -7,8 +7,7 @@ const SetupUserLanguage = ({ uiStore }) => {
   if (uiStore.adminLanguage === "nl") {
     return (
       <section>
-        <h2>Kies de taal voor de gebruiker</h2>
-        <p>Deze kan op elk moment nog gewijzigd worden</p>
+        <h2>Kies de standaardtaal van de gebruiker</h2>
         <Button
           variant={uiStore.userLanguage === "nl" ? "contained" : "text"}
           onClick={() => uiStore.setUserLanguage("nl")}
@@ -21,13 +20,16 @@ const SetupUserLanguage = ({ uiStore }) => {
         >
           FR
         </Button>
+        <p>
+          Deze taal kan op ieder moment aangepast worden door de gebruiker
+          tijdens het gebruik van de installatie.
+        </p>
       </section>
     );
   } else {
     return (
       <section>
-        <h2>Choisissez la langue pour l'utilisateur</h2>
-        <p>Cela peut être modifié à tout moment </p>
+        <h2>Choisissez la langue par défaut de l'utilisateur</h2>
         <Button
           variant={uiStore.userLanguage === "nl" ? "contained" : "text"}
           onClick={() => uiStore.setUserLanguage("nl")}
@@ -40,6 +42,10 @@ const SetupUserLanguage = ({ uiStore }) => {
         >
           FR
         </Button>
+        <p>
+          Cette langue peut être modifiée à tout moment par l'utilisateur
+          pendant l'utilisation de l'installation.
+        </p>
       </section>
     );
   }
