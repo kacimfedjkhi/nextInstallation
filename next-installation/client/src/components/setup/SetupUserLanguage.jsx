@@ -38,11 +38,23 @@ const SetupUserLanguage = ({ uiStore }) => {
       </ButtonWrapper>
 
       <LanguageTxt>
-        Deze taal kan op ieder moment aangepast worden door de gebruiker tijdens
-        het gebruik van de installatie.
+        {uiStore.adminLanguage === "nl"
+          ? content.nl.language
+          : content.fr.language}
       </LanguageTxt>
     </setUserLanguageContainer>
   );
+};
+
+const content = {
+  nl: {
+    language:
+      "Deze taal kan op ieder moment aangepast worden door de gebruiker tijdens het gebruik van de installatie."
+  },
+  fr: {
+    language:
+      "Cette langue peut être modifiée à tout moment par l'utilisateur pendant l'utilisation de l'installation."
+  }
 };
 
 const setUserLanguageContainer = styled.section`
@@ -71,10 +83,10 @@ const LanguageBtn = styled.button`
   background-size: contain;
   background-repeat: no-repeat;
   background-color: transparent;
-  width: 20rem;
+  width: 22.5rem;
 
   font-family: "Aracne";
-  font-size: 10rem;
+  font-size: 11.5rem;
   color: white;
 
   &:focus {
