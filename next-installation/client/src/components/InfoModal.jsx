@@ -6,19 +6,14 @@ import Fade from "@material-ui/core/Fade";
 import Button from "@material-ui/core/Button";
 import { inject, observer } from "mobx-react";
 
+import styled from "styled-components";
+import backgroundImg from "../assets/img/infoBg.png";
+
 const useStyles = makeStyles(theme => ({
   modal: {
     display: "flex",
     alignItems: "center",
     justifyContent: "center"
-  },
-  paper: {
-    backgroundColor: theme.palette.background.paper,
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-    borderRadius: 5,
-    outline: "none",
-    maxWidth: "60%"
   }
 }));
 
@@ -26,7 +21,7 @@ const InfoModal = ({ uiStore }) => {
   const classes = useStyles();
 
   return (
-    <div>
+    <>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -40,20 +35,73 @@ const InfoModal = ({ uiStore }) => {
         }}
       >
         <Fade in={uiStore.modal}>
-          <div className={classes.paper}>
+          <StyledModal>
             <Button onClick={uiStore.handleToggleModal}>X</Button>
-            <h2 id="transition-modal-title">De Eurometropool</h2>
-            <p id="transition-modal-description">
+            <Title
+              txtColor={
+                uiStore.selectedAction === "write" ? "#8089ce" : "#6ec8cd"
+              }
+              spanColor={
+                uiStore.selectedAction === "write" ? "#4e5587" : "#4da0a4"
+              }
+              id="transition-modal-title"
+            >
+              De Eurometropool, <span>wat</span>?
+            </Title>
+            <TextContent
+              txtColor={
+                uiStore.selectedAction === "write" ? "#8089ce" : "#6ec8cd"
+              }
+              id="transition-modal-description"
+            >
               De Eurometropool is een grensoverschrijdende samenwerking tussen
-              de regio’s van Kortrijk, Lille, Doornik en Valenciennes. Deze
-              samenwerking wordt ondersteund door NEXT, een jaarlijks
-              kunstenfestival dat in elke regio plaatsvindt.
-            </p>
-          </div>
+              de regio’s van{" "}
+              <span>Kortrijk, Lille, Doornik en Valenciennes.</span> Deze
+              samenwerking wordt ondersteund door <span>NEXT festival</span>,
+              een jaarlijks kunstenfestival dat in elke regio plaatsvindt.
+            </TextContent>
+            <button onClick={uiStore.handleToggleModal}></button>
+          </StyledModal>
         </Fade>
       </Modal>
-    </div>
+    </>
   );
 };
+
+const StyledModal = styled.section`
+  background-image: url(${backgroundImg});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 85rem;
+  height: 42.5rem;
+  padding: 5rem 0 0 8rem;
+
+  outline: none;
+`;
+
+const Title = styled.h2`
+  font-weight: bold;
+  color: ${props => props.txtColor};
+  font-size: 4rem;
+  max-width: 90rem;
+  padding: 2rem 0;
+
+  && span {
+    color: ${props => props.spanColor};
+  }
+`;
+
+const TextContent = styled.p`
+  font-weight: 600;
+  color: ${props => props.txtColor};
+  font-size: 2rem;
+  line-height: 2.3rem;
+  padding: 0rem 0 4rem 0;
+  max-width: 46rem;
+
+  && span {
+    font-weight: bold;
+  }
+`;
 
 export default inject(`uiStore`)(observer(InfoModal));

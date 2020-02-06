@@ -1,8 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../constants";
-import Button from "@material-ui/core/Button";
 import { inject, observer } from "mobx-react";
+
+import styled from "styled-components";
+import backgroundImage from "../assets/img/choiceBg.png";
+import writeImg from "../assets/img/writeImg.png";
+import openImg from "../assets/img/openImg.png";
 
 const Home = ({ uiStore }) => {
   const handleSetAction = e => {
@@ -10,24 +14,44 @@ const Home = ({ uiStore }) => {
   };
 
   return (
-    <>
-      <h1>Schrijf of open een kaartje</h1>
+    <StyledPage>
       <Link to={ROUTES.onboarding}>
-        <Button variant="contained" onClick={() => handleSetAction("write")}>
-          {uiStore.userLanguage === "nl"
-            ? "Schrijf een kaartje"
-            : "Ecrit une carte"}
-        </Button>
+        <Button
+          img={writeImg}
+          onClick={() => handleSetAction("write")}
+        ></Button>
       </Link>
       <Link to={ROUTES.onboarding}>
-        <Button variant="contained" onClick={() => handleSetAction("open")}>
-          {uiStore.userLanguage === "nl"
-            ? "Open een kaartje"
-            : "Ouvre une carte"}
-        </Button>
+        <Button img={openImg} onClick={() => handleSetAction("open")}></Button>
       </Link>
-    </>
+    </StyledPage>
   );
 };
+
+const StyledPage = styled.section`
+  width: 100vw;
+  height: 100vh;
+  background-image: url(${backgroundImage});
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Button = styled.button`
+  height: 100vw;
+  width: 50vw;
+  border: none;
+  background-color: transparent;
+  background-image: url(${props => props.img});
+  background-repeat: no-repeat;
+  background-size: 80%;
+  background-position: center;
+
+  &:focus {
+    outline: none;
+    transform: scale(0.95);
+  }
+`;
 
 export default inject(`uiStore`)(observer(Home));
