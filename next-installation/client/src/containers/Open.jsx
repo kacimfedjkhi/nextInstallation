@@ -6,7 +6,9 @@ import swipeNl from "../assets/img/swipe_nl.png";
 import swipeFr from "../assets/img/swipe_fr.png";
 import { inject, observer } from "mobx-react";
 
-const Open = ({ uiStore }) => {
+const Open = ({ uiStore, openStore }) => {
+  openStore.answer = false; //reset to hide keyboard
+
   return (
     <StyledPage>
       <CardsCollection />
@@ -42,4 +44,4 @@ const SwipeGesture = styled.div`
   height: 20rem;
 `;
 
-export default inject(`uiStore`)(observer(Open));
+export default inject(`uiStore`, `openStore`)(observer(Open));

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 import { Link } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
 import styled from "styled-components";
 
 import { ROUTES } from "../constants";

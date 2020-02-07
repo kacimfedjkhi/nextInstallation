@@ -1,8 +1,6 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import Button from "@material-ui/core/Button";
-
 import styled from "styled-components";
 import languageBtn from "../../assets/img/languageBtn.png";
 import activeLanguageBtn from "../../assets/img/activeLanguageBtn.png";

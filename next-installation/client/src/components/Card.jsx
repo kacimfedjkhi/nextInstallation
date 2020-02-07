@@ -7,18 +7,10 @@ import Button from "@material-ui/core/Button";
 
 import ReactCardFlip from "react-card-flip";
 
+import styled from "styled-components";
+import cardFront from "../assets/img/cardFront.png";
+
 const useStyles = makeStyles(theme => ({
-  front: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(80),
-      height: theme.spacing(40),
-      padding: "20px",
-      overflow: "hidden"
-    }
-  },
   back: {
     display: "flex",
     flexWrap: "wrap",
@@ -37,17 +29,20 @@ const Card = props => {
   return (
     <>
       <ReactCardFlip isFlipped={props.isFlipped} flipDirection="vertical">
-        <div className={classes.front}>
-          <Paper elevation={3}>
-            <h3>Uw kaartje</h3>
-            {props.theme ? <p>{props.theme}</p> : null}
-            {props.message ? <p>{props.message}</p> : null}
+        <Front>
+          {props.theme ? <p>{props.theme}</p> : null}
+          {props.message ? <Message>{props.message}</Message> : null}
+          {props.locationCreated ? (
+            <LocationCreated>{props.locationCreated}</LocationCreated>
+          ) : null}
+          <AnswerList>
             {props.answers
               ? props.answers.map(answer => <li key={answer}>{answer}</li>)
               : null}
-            {props.openStore ? <p>{props.openStore.message}</p> : null}
-          </Paper>
-        </div>
+          </AnswerList>
+
+          {props.openStore ? <p>{props.openStore.message}</p> : null}
+        </Front>
         <div className={classes.back}>
           <Paper elevation={3}>
             <img
@@ -61,5 +56,55 @@ const Card = props => {
     </>
   );
 };
+
+const Front = styled.div`
+  background-image: url(${cardFront});
+  background-size: contain;
+  width: 90rem;
+  height: 59rem;
+  transform: rotate(-5deg);
+  position: relative;
+`;
+
+const Message = styled.p`
+  font-family: "Aracne";
+  font-size: 4.5rem;
+  max-width: 35rem;
+  transform: rotate(-6deg);
+
+  position: absolute;
+  top: 8.5rem;
+  left: 6rem;
+  font-style: italic;
+  color: #6ec8cd;
+  font-weight: bolder;
+`;
+
+const LocationCreated = styled.p`
+  position: absolute;
+  right: 20rem;
+  bottom: 21.5rem;
+
+  font-size: 3rem;
+  font-family: "Nunito";
+  font-weight: bold;
+  color: #6ec8cd;
+`;
+
+const AnswerList = styled.ul`
+  position: absolute;
+  top: 25rem;
+  left: 6rem;
+
+  & li {
+    font-family: "Aracne";
+    color: #4da0a4;
+    font-size: 3.5rem;
+    padding: 1rem 0;
+    font-weight: bold;
+    font-style: italic;
+    transform: rotate(-5deg);
+  }
+`;
 
 export default inject(`writeStore`)(observer(Card));

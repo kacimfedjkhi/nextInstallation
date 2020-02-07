@@ -3,7 +3,6 @@ import { inject, observer, PropTypes } from "mobx-react";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 import { ROUTES } from "../constants";
 
 import backgroundImage from "../assets/img/adminBg.jpg";
