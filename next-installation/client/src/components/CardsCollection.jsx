@@ -3,16 +3,6 @@ import styled from "styled-components";
 import CardElement from "./CardElement";
 import { inject, observer } from "mobx-react";
 
-const StyledSpace = styled.div`
-  width: 100vw;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #f5f5f0;
-  z-index: -1;
-`;
-
 const CardsCollection = ({ openStore }) => {
   const getXpos = () => {
     const x = Math.floor(Math.random() * window.innerWidth - 400);
@@ -44,5 +34,13 @@ const CardsCollection = ({ openStore }) => {
     </StyledSpace>
   );
 };
+
+const StyledSpace = styled.div`
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+`;
 
 export default inject(`openStore`)(observer(CardsCollection));

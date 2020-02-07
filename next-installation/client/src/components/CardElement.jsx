@@ -5,6 +5,8 @@ import { withRouter } from "react-router-dom";
 import { ROUTES } from "../constants/index";
 import { observer } from "mobx-react";
 
+import envelope from "../assets/img/envelope.png";
+
 const CardElement = props => {
   const getRotation = () => {
     let rotation = Math.floor(Math.random() * 11);
@@ -18,14 +20,14 @@ const CardElement = props => {
   `;
 
   const Card = styled.div`
-    width: 400px;
-    height: 270px;
-    background-color: white;
-    border-radius: 3px;
-    box-shadow: 0px 2px 11px -1px rgba(0, 0, 0, 0.6);
+    width: 40rem;
+    height: 24.9rem;
     display: inline-block;
     position: absolute;
     transform: rotate(${getRotation}deg);
+
+    background-image: url(${envelope});
+    background-size: cover;
   `;
 
   let currentX, currentY, newX, newY;

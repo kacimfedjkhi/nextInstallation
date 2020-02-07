@@ -100,7 +100,7 @@ const TextContent = styled.p`
   max-width: 46rem;
 
   && span {
-    font-weight: bold;
+    font-weight: 800;
   }
 `;
 
