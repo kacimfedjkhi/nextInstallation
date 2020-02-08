@@ -39,9 +39,8 @@ const Card = props => {
             {props.answers
               ? props.answers.map(answer => <li key={answer}>{answer}</li>)
               : null}
+            <li>{props.openStore ? <p>{props.openStore.message}</p> : null}</li>
           </AnswerList>
-
-          {props.openStore ? <p>{props.openStore.message}</p> : null}
         </Front>
         <div className={classes.back}>
           <Paper elevation={3}>
@@ -96,6 +95,11 @@ const AnswerList = styled.ul`
   top: 25rem;
   left: 6rem;
 
+  width: 40rem;
+  height: 30rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+
   & li {
     font-family: "Aracne";
     color: #4da0a4;
@@ -104,6 +108,7 @@ const AnswerList = styled.ul`
     font-weight: bold;
     font-style: italic;
     transform: rotate(-5deg);
+    max-width: 39rem;
   }
 `;
 

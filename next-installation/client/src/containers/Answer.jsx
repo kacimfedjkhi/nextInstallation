@@ -24,21 +24,23 @@ const Answer = ({ openStore, writeStore, uiStore }) => {
   };
 
   const handleAnswerCard = () => {
-    console.log("answer");
     openStore.answerCard(card.id);
+    openStore.message = "";
   };
 
   return (
     <StyledPage>
-      <ThemeBalloon>
-        <img
-          src={uiStore.userLanguage === "nl" ? themeImgNl : themeImgFr}
-          width="400"
-          alt="Textballoon with theme "
-        />
-        <p>"{card.theme}"</p>
-      </ThemeBalloon>
-      <CardWrapper>
+      {!openStore.answer ? (
+        <ThemeBalloon>
+          <img
+            src={uiStore.userLanguage === "nl" ? themeImgNl : themeImgFr}
+            width="400"
+            alt="Textballoon with theme "
+          />
+          <p>"{card.theme}"</p>
+        </ThemeBalloon>
+      ) : null}
+      <CardWrapper translate={openStore.answer ? "0" : "26"}>
         <Card
           isFlipped={writeStore.cardFlipped}
           theme={card.theme}
@@ -62,8 +64,12 @@ const Answer = ({ openStore, writeStore, uiStore }) => {
           </>
         ) : null}
       </Buttons>
-      <Button onClick={handleAnswerCard}>Klaar</Button>
-      {openStore.answer ? <Keyboard store={openStore} /> : null}
+      {openStore.answer ? (
+        <>
+          <Keyboard store={openStore} />
+          <Button onClick={handleAnswerCard}>Klaar</Button>
+        </>
+      ) : null}
     </StyledPage>
   );
 };
@@ -94,7 +100,8 @@ const StyledPage = styled.section`
 `;
 
 const CardWrapper = styled.div`
-  transform: translateX(26rem);
+  transition: 0.3s ease-in-out;
+  transform: translateX(${props => props.translate}rem);
 `;
 
 const Buttons = styled.div`

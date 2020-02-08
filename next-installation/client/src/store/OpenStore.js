@@ -70,11 +70,10 @@ class OpenStore {
         card[0].locations.push("unknown location");
       }
 
-      //console.log(card[0]);
-
       this.api.answerCard(card[0]);
-      this.socket.emit(`saveAnswer`, card[0]);
       this.emptyValues();
+      this.socket.emit(`saveAnswer`, card[0]);
+      console.log(this.message);
     }
   };
 
@@ -89,7 +88,8 @@ decorate(OpenStore, {
   answer: observable,
   message: observable,
   getCards: action,
-  showCard: action
+  showCard: action,
+  answerCard: action
 });
 
 export default OpenStore;
