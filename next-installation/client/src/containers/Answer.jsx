@@ -26,6 +26,7 @@ const Answer = ({ openStore, writeStore, uiStore }) => {
   const handleAnswerCard = () => {
     openStore.answerCard(card.id);
     openStore.message = "";
+    
   };
 
   return (

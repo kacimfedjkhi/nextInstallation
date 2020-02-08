@@ -47,6 +47,7 @@ const StyledPage = styled.section`
   background-image: url(${backgroundImage});
   background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 `;
