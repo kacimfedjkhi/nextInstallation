@@ -67,7 +67,11 @@ const Answer = ({ openStore, writeStore, uiStore }) => {
       {openStore.answer ? (
         <>
           <Keyboard store={openStore} />
-          <Button onClick={handleAnswerCard}>Klaar</Button>
+          {openStore.message !== "" ? (
+            <DoneBtn onClick={handleAnswerCard}>
+              Mijn antwoord toevoegen
+            </DoneBtn>
+          ) : null}
         </>
       ) : null}
     </StyledPage>
@@ -176,6 +180,36 @@ const ThemeBalloon = styled.div`
     bottom: 16rem;
 
     transform: rotate(-10deg);
+  }
+`;
+
+const DoneBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  background-image: url(${turqoiseBtn});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30rem;
+  height: 6rem;
+
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+
+  color: white;
+  text-align: center;
+  font-size: 2rem;
+  font-family: "Nunito";
+  font-weight: bold;
+  margin-bottom: 1rem;
+
+  &:focus {
+    transform: scale(0.95);
+    outline: none;
+  }
+
+  :disabled {
+    opacity: 0.4;
   }
 `;
 

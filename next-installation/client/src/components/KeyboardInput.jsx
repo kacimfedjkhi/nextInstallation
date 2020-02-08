@@ -7,8 +7,8 @@ import { inject, observer } from "mobx-react";
 const Div = styled.div`
   width: 50%;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
+  bottom: 2rem;
+  margin: 0 auto;
 `;
 
 const KeyboardInput = props => {

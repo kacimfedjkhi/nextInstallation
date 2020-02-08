@@ -9,6 +9,8 @@ import ReactCardFlip from "react-card-flip";
 
 import styled from "styled-components";
 import cardFront from "../assets/img/cardFront.png";
+import cardBack from "../assets/img/cardBack_kortrijk.png";
+import flip from "../assets/img/flip.png";
 
 const useStyles = makeStyles(theme => ({
   back: {
@@ -28,30 +30,29 @@ const Card = props => {
 
   return (
     <>
+      <FlipBtn onClick={props.writeStore.handleFlipCard}>
+        <img width="60" src={flip} alt="Button to flip card" />
+      </FlipBtn>
       <ReactCardFlip isFlipped={props.isFlipped} flipDirection="vertical">
         <Front>
           {props.theme ? <p>{props.theme}</p> : null}
-          {props.message ? <Message>{props.message}</Message> : null}
+          <CardContent>
+            {props.message ? <Message>{props.message}</Message> : null}
+            <AnswerList>
+              {props.answers
+                ? props.answers.map(answer => <li key={answer}>{answer}</li>)
+                : null}
+              <li>
+                {props.openStore ? <p>{props.openStore.message}</p> : null}
+              </li>
+            </AnswerList>
+          </CardContent>
           {props.locationCreated ? (
             <LocationCreated>{props.locationCreated}</LocationCreated>
           ) : null}
-          <AnswerList>
-            {props.answers
-              ? props.answers.map(answer => <li key={answer}>{answer}</li>)
-              : null}
-            <li>{props.openStore ? <p>{props.openStore.message}</p> : null}</li>
-          </AnswerList>
         </Front>
-        <div className={classes.back}>
-          <Paper elevation={3}>
-            <img
-              src="https://images.unsplash.com/photo-1514918956881-335d75e3c0c2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
-              alt=""
-            />
-          </Paper>
-        </div>
+        <Back img={cardBack}></Back>
       </ReactCardFlip>
-      <Button onClick={props.writeStore.handleFlipCard}>flip</Button>
     </>
   );
 };
@@ -65,18 +66,25 @@ const Front = styled.div`
   position: relative;
 `;
 
+const Back = styled.div`
+  background-image: url(${props => props.img});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 90rem;
+  height: 59rem;
+  transform: rotate(-5deg);
+  position: relative;
+`;
+
 const Message = styled.p`
   font-family: "Aracne";
   font-size: 4.5rem;
   max-width: 35rem;
   transform: rotate(-6deg);
-
-  position: absolute;
-  top: 8.5rem;
-  left: 6rem;
   font-style: italic;
   color: #6ec8cd;
   font-weight: bolder;
+  margin-bottom: 3rem;
 `;
 
 const LocationCreated = styled.p`
@@ -91,14 +99,8 @@ const LocationCreated = styled.p`
 `;
 
 const AnswerList = styled.ul`
-  position: absolute;
-  top: 25rem;
-  left: 6rem;
-
   width: 40rem;
   height: 30rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
 
   & li {
     font-family: "Aracne";
@@ -110,6 +112,31 @@ const AnswerList = styled.ul`
     transform: rotate(-5deg);
     max-width: 39rem;
   }
+`;
+
+const FlipBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  width: 6rem;
+  height: 6rem;
+  z-index: 999;
+  outline: none;
+
+  position: relative;
+  top: 65rem;
+
+  &:focus {
+    transform: scale(0.95);
+  }
+`;
+
+const CardContent = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  width: 45rem;
+  height: 50rem;
+  padding: 6rem 0 0 5rem;
 `;
 
 export default inject(`writeStore`)(observer(Card));
