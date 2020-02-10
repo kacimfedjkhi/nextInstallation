@@ -1,7 +1,6 @@
 import React from "react";
 import { inject, observer, PropTypes } from "mobx-react";
-import { withRouter } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { ROUTES } from "../constants";
 import QRCode from "qrcode.react";
 
@@ -15,7 +14,7 @@ const Answered = ({ openStore, uiStore, history }) => {
 
   const handleClickWrite = () => {
     uiStore.selectedAction = "write";
-    history.push(ROUTES.onboarding);
+    //history.push(ROUTES.onboarding);
   };
 
   return (
@@ -52,9 +51,11 @@ const Answered = ({ openStore, uiStore, history }) => {
         <MoreTxt>
           <p>Heel wat lege kaartjes wachten om verstuurd te worden</p>
         </MoreTxt>
-        <WriteBtn onClick={handleClickWrite}>
-          Zelf een kaartje versturen
-        </WriteBtn>
+        <Link to={ROUTES.onboarding}>
+          <WriteBtn onClick={handleClickWrite}>
+            Zelf een kaartje versturen
+          </WriteBtn>
+        </Link>
       </MoreBtn>
     </StyledPage>
   );

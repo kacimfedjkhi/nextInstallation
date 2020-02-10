@@ -6,12 +6,14 @@ import BottomButtons from "../components/BottomButtons";
 import Card from "../components/Card";
 import ThemesList from "../components/Themes";
 import MessageInput from "../components/MessageInput";
+import ControlCard from "../components/ControlCard";
 
 import backgroundImage from "../assets/img/choiceBg.png";
 import steps from "../assets/img/steps_1.png";
 
 const Write = ({ writeStore, uiStore }) => {
   const activeStep = writeStore.activeStep;
+  //const activeStep = 2;
 
   const renderInput = i => {
     switch (i) {
@@ -19,6 +21,8 @@ const Write = ({ writeStore, uiStore }) => {
         return <ThemesList />;
       case 1:
         return <MessageInput />;
+      case 2:
+        return <ControlCard />;
       default:
         return null;
     }
@@ -44,7 +48,6 @@ const Write = ({ writeStore, uiStore }) => {
           />
         </CardSection>
       </RowLayout>
-
       <BottomButtons />
     </StyledPage>
   );

@@ -167,7 +167,7 @@ const ThrowbackBtn = styled.button`
 
 const ThemeBalloon = styled.div`
   position: absolute;
-  left: 37rem;
+  left: 33rem;
   top: 15rem;
 
   z-index: 99;

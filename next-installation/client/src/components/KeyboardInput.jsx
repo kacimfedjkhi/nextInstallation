@@ -9,6 +9,7 @@ const Div = styled.div`
   position: absolute;
   bottom: 2rem;
   margin: 0 auto;
+  z-index: 1000;
 `;
 
 const KeyboardInput = props => {

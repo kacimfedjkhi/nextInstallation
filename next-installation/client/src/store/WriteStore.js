@@ -12,7 +12,7 @@ class WriteStore {
 
   inputMethod = "templates";
 
-  cardFlipped = false;
+  cardFlipped = true;
 
   constructor(rootStore) {
     this.rootStore = rootStore;
@@ -40,7 +40,7 @@ class WriteStore {
       case 1:
         return "Wat zou je graag vertellen of vragen?";
       case 2:
-        return "Is je kaartje klaar om te versturen?";
+        return "";
       case 3:
         return "Klaar! Uw kaartje wordt verstuurd";
       default:
@@ -49,18 +49,7 @@ class WriteStore {
   };
 
   handleChangeInput = selectedInput => {
-    switch (selectedInput) {
-      case "templates":
-        this.inputMethod = selectedInput;
-        break;
-      case "keyboard":
-        console.log(selectedInput);
-
-        this.inputMethod = selectedInput;
-        break;
-      default:
-        return "templates";
-    }
+    this.inputMethod = selectedInput;
   };
 
   handleFlipCard = () => {

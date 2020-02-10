@@ -2,59 +2,139 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 import Keyboard from "./KeyboardInput";
 
-import Chip from "@material-ui/core/Chip";
+import styled from "styled-components";
 import Button from "@material-ui/core/Button";
+
+import templateBg from "../assets/img/templateBg.png";
+import templateBg_dark from "../assets/img/templateBg_dark.png";
+
+import inputChoiceBg_dark from "../assets/img/inputChoiceBg_dark.png";
+import inputChoiceBg_light from "../assets/img/inputChoiceBg_light.png";
 
 const MessageInput = ({ writeStore }) => {
   const handleClick = msg => {
     writeStore.message = msg;
   };
 
-  const messages = [
-    "Wat is daar een typisch regionaal product?",
-    "Wat is uw favoriete gerecht?",
-    "Wat is het beste restaurantje daar?"
-  ];
-
   let input = writeStore.inputMethod;
 
   return (
     <>
-      <Button
-        variant={input === "templates" ? "contained" : "outlined"}
-        onClick={() => writeStore.handleChangeInput("templates")}
-      >
-        sjablonen
-      </Button>
-      <Button
-        variant={input === "keyboard" ? "contained" : "outlined"}
-        onClick={() => writeStore.handleChangeInput("keyboard")}
-      >
-        eigen boodschap
-      </Button>
+      <InputChoice>
+        <InputChoiceBtn
+          onClick={() => writeStore.handleChangeInput("templates")}
+          img={
+            writeStore.inputMethod === "templates"
+              ? inputChoiceBg_dark
+              : inputChoiceBg_light
+          }
+        >
+          sjablonen
+        </InputChoiceBtn>
+        <InputChoiceBtn
+          onClick={() => writeStore.handleChangeInput("keyboard")}
+          img={
+            writeStore.inputMethod === "keyboard"
+              ? inputChoiceBg_dark
+              : inputChoiceBg_light
+          }
+        >
+          eigen boodschap
+        </InputChoiceBtn>
+      </InputChoice>
 
       <br />
-      {input === "templates"
-        ? messages.map(message => (
-            <Chip
-              key={message}
-              label={message}
-              variant="outlined"
-              onClick={() => handleClick(message)}
-            />
-          ))
-        : null}
-      {/* {messages.map(message => (
-        <Chip
-          key={message}
-          label={message}
-          variant="outlined"
-          onClick={() => handleClick(message)}
-        />
-      ))} */}
+      {input === "templates" ? (
+        <MessageList>
+          {messages[writeStore.theme].map(message => (
+            <TemplateMessage key={message} onClick={() => handleClick(message)}>
+              {message}
+            </TemplateMessage>
+          ))}
+        </MessageList>
+      ) : null}
       {input === "keyboard" ? <Keyboard store={writeStore} /> : null}
     </>
   );
+};
+
+const TemplateMessage = styled.button`
+  border: none;
+  background-color: transparent;
+  background-image: url(${templateBg});
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 6.5rem;
+  margin-bottom: 1rem;
+
+  color: #8089ce;
+  font-family: "Nunito";
+  font-weight: bold;
+  font-size: 2rem;
+
+  &:focus {
+    outline: none;
+    background-image: url(${templateBg_dark});
+    color: white;
+  }
+`;
+
+const MessageList = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const InputChoice = styled.div``;
+
+const InputChoiceBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  background-image: url(${props => props.img});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30rem;
+  height: 6rem;
+
+  font-size: 2.5rem;
+  color: white;
+  font-weight: bold;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const messages = {
+  news: [
+    "Wat zijn de laatste nieuwtjes van jouw streek?",
+    "Wat moet iedereen weten over jouw streek?",
+    "Welke boodschap zou je graag delen met iedereen?"
+  ],
+  nature: [
+    "Wat is het mooiste natuurplekje in jouw streek?",
+    "Zou je liever meer of minder natuur in jouw streek zien?",
+    "Woon je liever in de stad of op het platteland?"
+  ],
+  technology: [
+    "Is jouw streek eerder ouderwets of modern?",
+    "Wat is jouw favoriete stukje technologie?",
+    "Hoelang zou jij zonder je smartphone kunnen"
+  ],
+  culinary: [
+    "Wat is een typisch gerecht van jouw streek?",
+    "Wat zou iedereen wel eens gegeten moeten hebben?",
+    "Welk restaurant zou je aan iedereen aanraden?"
+  ],
+  tourism: [
+    "Wat is uniek aan jouw streek?",
+    "Beschrijf jouw streek in 3 woorden.",
+    "Beschrijf de inwoners van jouw streek."
+  ],
+  art: [
+    "Kent jouw streek een bekende kunstenaar?",
+    "Kent jouw streek een bekende muzikant?",
+    "Beoefen jij een vorm van kunst?"
+  ]
 };
 
 export default inject(`writeStore`)(observer(MessageInput));

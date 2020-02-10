@@ -2,8 +2,6 @@ import React from "react";
 import { inject, observer } from "mobx-react";
 
 import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
 
 import ReactCardFlip from "react-card-flip";
 
@@ -33,6 +31,7 @@ const Card = props => {
       <FlipBtn onClick={props.writeStore.handleFlipCard}>
         <img width="60" src={flip} alt="Button to flip card" />
       </FlipBtn>
+
       <ReactCardFlip isFlipped={props.isFlipped} flipDirection="vertical">
         <Front>
           {props.theme ? <p>{props.theme}</p> : null}
@@ -82,7 +81,7 @@ const Message = styled.p`
   max-width: 35rem;
   transform: rotate(-6deg);
   font-style: italic;
-  color: #6ec8cd;
+  color: #8089ce;
   font-weight: bolder;
   margin-bottom: 3rem;
 `;

@@ -3,7 +3,9 @@ import { inject, observer } from "mobx-react";
 import { ROUTES } from "../constants/index";
 import { withRouter } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
+import styled from "styled-components";
+import purpleBtn from "../assets/img/purpleBtn_s.png";
+import greyBtn from "../assets/img/greyBtn_s.png";
 
 const BottomButtons = ({ writeStore, history }) => {
   const activeStep = writeStore.activeStep;
@@ -65,23 +67,70 @@ const BottomButtons = ({ writeStore, history }) => {
   }
 
   return (
-    <>
+    <BottomButtonsWrapper>
       {activeStep < 4 ? (
         <>
-          <Button
-            variant="contained"
-            onClick={handlePrev}
-            disabled={activeStep === 0}
-          >
+          <PrevBtn onClick={handlePrev} opacity={activeStep > 0 ? "1" : "0"}>
             {prevBtn}
-          </Button>
-          <Button variant="contained" onClick={handleNext} disabled={disabled}>
-            {nextBtn}
-          </Button>
+          </PrevBtn>
+
+          {!disabled ? <NextBtn onClick={handleNext}>{nextBtn}</NextBtn> : null}
         </>
       ) : null}
-    </>
+    </BottomButtonsWrapper>
   );
 };
+
+const BottomButtonsWrapper = styled.div`
+  position: absolute;
+  bottom: 2rem;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+`;
+
+const NextBtn = styled.button`
+  border: none;
+  background-color: transparent;
+  background-image: url(${purpleBtn});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 30rem;
+  height: 5.5rem;
+
+  color: white;
+  font-family: "Nunito";
+  font-size: 2rem;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+    transform: scale(0.95);
+  }
+`;
+
+const PrevBtn = styled.button`
+  opacity: ${props => props.opacity};
+
+  border: none;
+  background-color: transparent;
+  background-image: url(${greyBtn});
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 26.5rem;
+  height: 5.5rem;
+
+  color: #8089ce;
+  font-family: "Nunito";
+  font-size: 2rem;
+  font-weight: 600;
+
+  &:focus {
+    outline: none;
+    transform: scale(0.95);
+  }
+`;
 
 export default inject(`writeStore`)(withRouter(observer(BottomButtons)));
