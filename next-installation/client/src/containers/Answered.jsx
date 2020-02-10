@@ -8,24 +8,39 @@ import styled from "styled-components";
 import backgroundImage from "../assets/img/adminBg.jpg";
 import QRCode from "qrcode.react";
 
-const Answer = ({ openStore }) => {
+const Answer = ({ openStore, uiStore }) => {
   console.log(openStore.selectedCard);
 
   return (
     <StyledPage>
       <ThankLine>
-        Bedankt om dit kaartje van een antwoord te voorzien!
+        {uiStore.userLanguage === "nl"
+          ? "Bedankt om dit kaartje van een antwoord te voorzien"
+          : "Merci d'avoir répondu à cette carte"}
+        !
       </ThankLine>
-      <h2>
-        Blijf dit kaartje <span>volgen</span> via onderstaande{" "}
-        <span>QR-code</span>
-      </h2>
-      <p>en kijk wat anderen te zeggen hebben!</p>
-
-      <div>
+      <Follow>
+        {uiStore.userLanguage === "nl" ? (
+          <>
+            Blijf dit kaartje <span>volgen</span> via onderstaande{" "}
+            <span>QR-code</span>
+          </>
+        ) : (
+          <>
+            Continuez à <span>suivre</span> cette carte en utilisant{" "}
+            <span>le code QR</span> ci-dessous
+          </>
+        )}
+      </Follow>
+      <Others>
+        {uiStore.userLanguage === "nl"
+          ? "en kijk wat anderen te zeggen hebben!"
+          : "et voyez ce que les autres ont à dire !"}
+      </Others>
+      <Codes>
         <QRCode value={`index.html/${openStore.selectedCard.uniqueId}`} />
-        <p>{openStore.selectedCard}</p>
-      </div>
+        <UniqueId>{openStore.selectedCard}</UniqueId>
+      </Codes>
     </StyledPage>
   );
 };
@@ -43,10 +58,45 @@ const StyledPage = styled.section`
 `;
 
 const ThankLine = styled.p`
-  color: #6ec8cd;
+  color: #4eb5bb;
   font-size: 2.5rem;
   font-family: "Nunito";
   font-weight: 600;
+`;
+
+const Follow = styled.h2`
+  color: #4eb5bb;
+  font-size: 3.5rem;
+  font-family: "Nunito";
+  font-weight: bold;
+  padding: 2.5rem 0 1rem 0;
+
+  & span {
+    color: #4da0a4;
+  }
+`;
+
+const Others = styled.p`
+  color: #4da0a4;
+  font-size: 2.5rem;
+  font-family: "Nunito";
+  font-weight: 600;
+`;
+
+const Codes = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 5rem;
+`;
+
+const UniqueId = styled.p`
+  color: #4da0a4;
+  font-size: 2.5rem;
+  font-family: "Nunito";
+  font-weight: bold;
+  padding-top: 2rem;
 `;
 
 Answer.propTypes = {

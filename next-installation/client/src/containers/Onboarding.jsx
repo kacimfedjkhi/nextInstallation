@@ -22,7 +22,7 @@ const Onboarding = ({ uiStore }) => {
   return (
     <StyledPage>
       <Title
-        txtColor={selectedAction === "write" ? "#8089ce" : "#6ec8cd"}
+        txtColor={selectedAction === "write" ? "#8089ce" : "#4eb5bb"}
         spanColor={selectedAction === "write" ? "#4e5587" : "#4da0a4"}
       >
         {selectedAction === "write" ? (
@@ -37,7 +37,7 @@ const Onboarding = ({ uiStore }) => {
           </>
         )}
       </Title>
-      <Baseline txtColor={selectedAction === "write" ? "#8089ce" : "#6ec8cd"}>
+      <Baseline txtColor={selectedAction === "write" ? "#8089ce" : "#4eb5bb"}>
         {selectedAction === "write"
           ? `Schrijf het op een postkaartje en stuur uw regionale kennis uit.`
           : `Open dan snel een kaartje en deel uw regionale kennis!`}
@@ -54,7 +54,7 @@ const Onboarding = ({ uiStore }) => {
         <Link to={ROUTES.home}>
           <Button
             img={greyBtn}
-            txtColor={selectedAction === "write" ? "#8089ce" : "#6ec8cd"}
+            txtColor={selectedAction === "write" ? "#8089ce" : "#4eb5bb"}
           >
             Terug naar start
           </Button>
