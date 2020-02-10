@@ -1,34 +1,68 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import Chip from "@material-ui/core/Chip";
+import UIStore from "../store/UIStore";
+import styled from "styled-components";
 
-const ThemesList = ({ writeStore }) => {
-  const handleClick = e => {
+const ThemesList = ({ writeStore, uiStore }) => {
+  const handleClickTheme = e => {
     writeStore.theme = e;
   };
 
   const themes = [
-    "Culinair",
-    "Sport",
-    "Kunst",
-    "Toerisme",
-    "Cultuur",
-    "Business"
+    {
+      nl: "kunst",
+      fr: "art",
+      en: "art"
+    },
+    {
+      nl: "culinair",
+      fr: "culinaire",
+      en: "culinary"
+    },
+    {
+      nl: "actualiteit",
+      fr: "actualite",
+      en: "news"
+    },
+    {
+      nl: "technologie",
+      fr: "technologie",
+      en: "technology"
+    },
+    {
+      nl: "natuur",
+      fr: "nature",
+      en: "nature"
+    },
+    {
+      nl: "toerisme",
+      fr: "tourisme",
+      en: "tourism"
+    }
   ];
 
   return (
     <>
       {themes.map(theme => (
-        <Chip
+        <ThemeButton
+          img={uiStore.userLanguage === "nl" ? theme.nl : theme.fr}
           key={theme}
-          label={theme}
-          variant="outlined"
-          onClick={() => handleClick(theme)}
-        />
+          onClick={() => handleClickTheme(theme.en)}
+        >
+          <p>{uiStore.userLanguage === "nl" ? theme.nl : theme.fr}</p>
+        </ThemeButton>
       ))}
     </>
   );
 };
 
-export default inject(`writeStore`)(observer(ThemesList));
+const ThemeButton = styled.button`
+  background-image: url("${props => props.img}.png");
+  background-color: transparent;
+  border: none;
+  width: 15rem;
+  height: 10rem;
+`;
+
+export default inject(`writeStore`, `uiStore`)(observer(ThemesList));

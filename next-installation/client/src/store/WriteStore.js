@@ -36,7 +36,7 @@ class WriteStore {
   getStepTitle = stepIndex => {
     switch (stepIndex) {
       case 0:
-        return "Welk thema spreekt je het meeste aan?";
+        return "Welk thema spreekt je het meest aan tijdens het ontdekken van een nieuwe regio, cultuur of land?";
       case 1:
         return "Wat zou je graag vertellen of vragen?";
       case 2:
