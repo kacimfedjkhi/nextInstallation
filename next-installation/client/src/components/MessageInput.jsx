@@ -52,7 +52,11 @@ const MessageInput = ({ writeStore }) => {
             </TemplateMessage>
           ))}
         </MessageList>
-      ) : null}
+      ) : (
+        <p>
+          Start met typen en uw boodschap verschijnt direct op het postkaartje!
+        </p>
+      )}
       {input === "keyboard" ? <Keyboard store={writeStore} /> : null}
     </>
   );
