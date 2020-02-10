@@ -4,6 +4,7 @@ export const ROUTES = {
   write: `/write`,
   open: `/open`,
   answer: `/answer`,
+  answered: `/answered`,
   detail: `/detail`,
   admin: `/admin`,
   setup: `/setup`,

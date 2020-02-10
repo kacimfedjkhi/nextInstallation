@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 import { inject, observer } from "mobx-react";
 
 import styled from "styled-components";
-import backgroundImg from "../assets/img/infoBg.png";
+import backgroundImgWrite from "../assets/img/infoBg_write.png";
+import backgroundImgOpen from "../assets/img/infoBg_open.png";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -35,7 +36,13 @@ const InfoModal = ({ uiStore }) => {
         }}
       >
         <Fade in={uiStore.modal}>
-          <StyledModal>
+          <StyledModal
+            img={
+              uiStore.selectedAction === "write"
+                ? backgroundImgWrite
+                : backgroundImgOpen
+            }
+          >
             <Button onClick={uiStore.handleToggleModal}>X</Button>
             <Title
               txtColor={
@@ -69,7 +76,7 @@ const InfoModal = ({ uiStore }) => {
 };
 
 const StyledModal = styled.section`
-  background-image: url(${backgroundImg});
+  background-image: url(${props => props.img});
   background-size: contain;
   background-repeat: no-repeat;
   width: 85rem;

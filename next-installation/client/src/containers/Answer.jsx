@@ -1,7 +1,7 @@
 import React from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 import Card from "../components/Card";
-import Button from "@material-ui/core/Button";
+import { withRouter } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { ROUTES } from "../constants";
 import Keyboard from "../components/KeyboardInput";
@@ -14,19 +14,17 @@ import lightBtn from "../assets/img/lightBtn_s.png";
 import themeImgNl from "../assets/img/themeMessageBubble_nl.png";
 import themeImgFr from "../assets/img/themeMessageBubble_fr.png";
 
-const Answer = ({ openStore, writeStore, uiStore }) => {
+const Answer = ({ openStore, writeStore, uiStore, history }) => {
   const card = openStore.showCard();
 
   const handleClickAnswer = () => {
-    console.log("kakwofd");
-
     openStore.answer = true;
   };
 
   const handleAnswerCard = () => {
     openStore.answerCard(card.id);
     openStore.message = "";
-    
+    history.push(ROUTES.answered);
   };
 
   return (
@@ -54,6 +52,10 @@ const Answer = ({ openStore, writeStore, uiStore }) => {
         />
       </CardWrapper>
       <Buttons>
+        <LocationAmount>
+          Dit kaartje werd al op
+          <br /> {card.answers.length} andere locaties beantwoord.
+        </LocationAmount>
         {!openStore.answer ? (
           <>
             <AnswerBtn onClick={handleClickAnswer}>
@@ -111,12 +113,13 @@ const CardWrapper = styled.div`
 
 const Buttons = styled.div`
   position: absolute;
-  top: 45%;
-  left: 20rem;
+  top: 55%;
+  left: 23rem;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 `;
 
 const AnswerBtn = styled.button`
@@ -133,7 +136,7 @@ const AnswerBtn = styled.button`
   font-size: 2rem;
   font-family: "Nunito";
   font-weight: bold;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 
   &:focus {
     transform: scale(0.95);
@@ -164,8 +167,8 @@ const ThrowbackBtn = styled.button`
 
 const ThemeBalloon = styled.div`
   position: absolute;
-  left: 30rem;
-  top: 5rem;
+  left: 37rem;
+  top: 15rem;
 
   z-index: 99;
 
@@ -214,8 +217,21 @@ const DoneBtn = styled.button`
   }
 `;
 
+const LocationAmount = styled.p`
+  color: white;
+  font-family: "Nunito";
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  padding-bottom: 2rem;
+`;
+
 Answer.propTypes = {
   openStore: PropTypes.observableObject.isRequired
 };
 
-export default inject(`openStore`, `writeStore`, `uiStore`)(observer(Answer));
+export default inject(
+  `openStore`,
+  `writeStore`,
+  `uiStore`
+)(withRouter(observer(Answer)));

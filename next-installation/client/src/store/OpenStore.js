@@ -18,8 +18,6 @@ class OpenStore {
   }
 
   updateCard = newData => {
-    console.log("test sokket update", newData);
-
     const card = this.cards.filter(obj => {
       return obj.uniqueId === newData.uniqueId;
     });
@@ -36,15 +34,12 @@ class OpenStore {
   };
 
   _addCard = values => {
-    console.log("in add func", values);
-
     const card = new Card(this.rootStore);
     card.updateFromServer(values);
     runInAction(() => this.cards.push(card));
   };
 
   addCard = card => {
-    //const card = new Card(this.rootStore);
     this.cards.push(card);
   };
 

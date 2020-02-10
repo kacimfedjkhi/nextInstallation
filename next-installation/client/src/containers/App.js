@@ -7,6 +7,7 @@ import Onboarding from "./Onboarding";
 import Write from "./Write";
 import Open from "./Open";
 import Answer from "./Answer";
+import Answered from "./Answered";
 import CardDetail from "./CardDetail";
 import Admin from "./Admin";
 import Setup from "./Setup";
@@ -21,6 +22,7 @@ function App() {
         <Route path={ROUTES.write} component={Write} />
         <Route path={ROUTES.open} component={Open} />
         <Route path={ROUTES.answer} component={Answer} />
+        <Route path={ROUTES.answered} component={Answered} />
         <Route path={ROUTES.detail} component={CardDetail} />
         <Route path={ROUTES.admin} component={Admin} />
         <Route path={ROUTES.setup} component={Setup} />

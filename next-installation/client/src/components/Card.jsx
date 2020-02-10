@@ -60,8 +60,8 @@ const Card = props => {
 const Front = styled.div`
   background-image: url(${cardFront});
   background-size: contain;
-  width: 90rem;
-  height: 59rem;
+  width: 100rem;
+  height: 66rem;
   transform: rotate(-5deg);
   position: relative;
 `;
@@ -70,8 +70,8 @@ const Back = styled.div`
   background-image: url(${props => props.img});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 90rem;
-  height: 59rem;
+  width: 100rem;
+  height: 66rem;
   transform: rotate(-5deg);
   position: relative;
 `;
@@ -90,7 +90,7 @@ const Message = styled.p`
 const LocationCreated = styled.p`
   position: absolute;
   right: 20rem;
-  bottom: 21.5rem;
+  bottom: 24rem;
 
   font-size: 3rem;
   font-family: "Nunito";
@@ -123,7 +123,7 @@ const FlipBtn = styled.button`
   outline: none;
 
   position: relative;
-  top: 65rem;
+  top: 70rem;
 
   &:focus {
     transform: scale(0.95);

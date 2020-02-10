@@ -56,7 +56,6 @@ class UIStore {
     switch (language) {
       case "nl":
         this.userLanguage = "nl";
-        console.log(language);
 
         break;
       case "fr":
@@ -68,8 +67,6 @@ class UIStore {
   };
 
   handleChangeLocation = value => {
-    console.log(value);
-
     this.selectedLocation = value;
   };
 
