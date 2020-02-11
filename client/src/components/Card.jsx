@@ -18,7 +18,6 @@ import newsOverlay from "../assets/img/overlays/newsOverlay.png";
 import tourismOverlay from "../assets/img/overlays/tourismOverlay.png";
 
 const Card = props => {
-<<<<<<< HEAD
   const getOverlay = theme => {
     return overlays[theme];
   };
@@ -31,9 +30,6 @@ const Card = props => {
     culinary: culinaryOverlay,
     tourism: tourismOverlay
   };
-=======
-  const getOverlay = theme => {};
->>>>>>> master
 
   return (
     <>
@@ -85,9 +81,10 @@ const Back = styled.div`
 
   &:after {
     content: "";
-    background-image: url(${techOverlay});
+    background-image: url(${props => props.overlay});
+    background-size: contain;
     width: 100rem;
-    height: 66rem;
+    height: 65rem;
     position: absolute;
     top: 0;
     left: 0;

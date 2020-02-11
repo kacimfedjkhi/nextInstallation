@@ -53,9 +53,9 @@ const MessageInput = ({ writeStore }) => {
           ))}
         </MessageList>
       ) : (
-        <p>
+        <KeyboardMessage>
           Start met typen en uw boodschap verschijnt direct op het postkaartje!
-        </p>
+        </KeyboardMessage>
       )}
       {input === "keyboard" ? <Keyboard store={writeStore} /> : null}
     </>
@@ -106,6 +106,12 @@ const InputChoiceBtn = styled.button`
   &:focus {
     outline: none;
   }
+`;
+
+const KeyboardMessage = styled.p`
+  color: #8089ce;
+  font-size: 2rem;
+  font-weight: 
 `;
 
 const messages = {
