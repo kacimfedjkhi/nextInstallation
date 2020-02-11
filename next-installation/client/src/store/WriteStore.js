@@ -16,7 +16,7 @@ class WriteStore {
 
   constructor(rootStore) {
     this.rootStore = rootStore;
-    this.api = new Api(`card`);
+    this.api = new Api(`cards`);
     this.socket = rootStore.uiStore.socket;
   }
 
