@@ -86,6 +86,36 @@ class WriteStore {
     this.uniqueId = "";
     this.cardFlipped = true;
   };
+
+  handleClickTheme = e => {
+    this.theme = e;
+  };
+
+  getImg = theme => {
+    let img;
+    console.log(this.theme);
+
+    // if (this.rootStore.uiStore.userLanguage === "nl") {
+    //   this.theme == theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);
+    // } else {
+    //   this.theme == "" && theme.en === this.theme
+    //     ? (img = theme.fr[1])
+    //     : (img = theme.fr[0]);
+    // }
+
+    switch (this.rootStore.uiStore.userLanguage) {
+      case "nl":
+        this.theme == theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);
+        break;
+      case "fr":
+        this.theme == theme.en ? (img = theme.fr[1]) : (img = theme.fr[0]);
+        break;
+      default:
+        img = "";
+    }
+
+    return img;
+  };
 }
 
 decorate(WriteStore, {
@@ -98,7 +128,9 @@ decorate(WriteStore, {
   handleChangeInput: action,
   handleFlipCard: action,
   sendCard: action,
-  emptyValues: action
+  emptyValues: action,
+  handleClickTheme: action,
+  getImg: action
 });
 
 export default WriteStore;

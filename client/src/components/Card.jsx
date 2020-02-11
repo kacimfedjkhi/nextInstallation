@@ -10,21 +10,15 @@ import cardFront from "../assets/img/cardFront.png";
 import cardBack from "../assets/img/cardBack_kortrijk.png";
 import flip from "../assets/img/flip.png";
 
-const useStyles = makeStyles(theme => ({
-  back: {
-    display: "flex",
-    flexWrap: "wrap",
-    "& > *": {
-      margin: theme.spacing(1),
-      width: theme.spacing(85),
-      height: theme.spacing(45),
-      overflow: "hidden"
-    }
-  }
-}));
+import natureOverlay from "../assets/img/overlays/natureOverlay.png";
+import techOverlay from "../assets/img/overlays/techOverlay.png";
+import culinaryOverlay from "../assets/img/overlays/culinaryOverlay.png";
+import artOverlay from "../assets/img/overlays/artOverlay.png";
+import newsOverlay from "../assets/img/overlays/newsOverlay.png";
+import tourismOverlay from "../assets/img/overlays/tourismOverlay.png";
 
 const Card = props => {
-  const classes = useStyles();
+  const getOverlay = theme => {};
 
   return (
     <>
@@ -50,7 +44,7 @@ const Card = props => {
             <LocationCreated>{props.locationCreated}</LocationCreated>
           ) : null}
         </Front>
-        <Back img={cardBack}></Back>
+        <Back img={props.image} overlay={getOverlay(props.theme)}></Back>
       </ReactCardFlip>
     </>
   );

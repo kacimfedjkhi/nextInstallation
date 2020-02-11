@@ -33,57 +33,35 @@ import technologie from "../assets/img/themes/technologie.png";
 import technologieSelected from "../assets/img/themes/technologie_selected.png";
 
 const ThemesList = ({ writeStore, uiStore }) => {
-  const handleClickTheme = e => {
-    writeStore.theme = e;
-  };
-
-  // const getImg = theme => {
-  //   let img;
-
-  //   if (uiStore.userLanguage === "nl") {
-  //     theme.en === writeStore.theme
-  //       ? (img = `../assets/img/themes/${theme.nl}_selected.png`)
-  //       : (img = theme.nl);
-  //   } else {
-  //     theme.en === writeStore.theme
-  //       ? (img = `${theme.fr}Selected`)
-  //       : (img = theme.nl);
-  //   }
-
-  //   console.log(img);
-
-  //   return img;
-  // };
-
   const themes = [
     {
-      nl: kunst,
-      fr: art,
+      nl: [kunst, kunstSelected],
+      fr: [art, artSelected],
       en: "art"
     },
     {
-      nl: culinair,
-      fr: culinaire,
+      nl: [culinair, culinairSelected],
+      fr: [culinaire, culinaireSelected],
       en: "culinary"
     },
     {
-      nl: actualiteit,
-      fr: actualite,
+      nl: [actualiteit, actualiteitSelected],
+      fr: [actualite, actualiteSelected],
       en: "news"
     },
     {
-      nl: technologie,
-      fr: technologie,
+      nl: [technologie, technologieSelected],
+      fr: [technologie, technologieSelected],
       en: "technology"
     },
     {
-      nl: natuur,
-      fr: nature,
+      nl: [natuur, natuurSelected],
+      fr: [nature, natuurSelected],
       en: "nature"
     },
     {
-      nl: toerisme,
-      fr: tourisme,
+      nl: [toerisme, toerismeSelected],
+      fr: [tourisme, tourismeSelected],
       en: "tourism"
     }
   ];
@@ -92,9 +70,9 @@ const ThemesList = ({ writeStore, uiStore }) => {
     <ButtonList>
       {themes.map(theme => (
         <ThemeButton
-          img={uiStore.userLanguage === "nl" ? theme.nl : theme.fr}
+          img={writeStore.theme === theme.en ? theme.nl[1] : theme.nl[0]}
           key={theme.en}
-          onClick={() => handleClickTheme(theme.en)}
+          onClick={() => writeStore.handleClickTheme(theme.en)}
         ></ThemeButton>
       ))}
     </ButtonList>

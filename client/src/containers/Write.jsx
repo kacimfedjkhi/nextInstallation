@@ -11,6 +11,8 @@ import ControlCard from "../components/ControlCard";
 import backgroundImage from "../assets/img/choiceBg.png";
 import steps from "../assets/img/steps_1.png";
 
+import kortrijkImage from "../assets/img/cardImages/kortrijkImage.png";
+
 const Write = ({ writeStore, uiStore }) => {
   const activeStep = writeStore.activeStep;
   //const activeStep = 2;
@@ -43,6 +45,7 @@ const Write = ({ writeStore, uiStore }) => {
             isFlipped={writeStore.cardFlipped}
             theme={writeStore.theme}
             message={writeStore.message}
+            image={kortrijkImage}
             store={writeStore}
             locationCreated={uiStore.selectedLocation}
           />
