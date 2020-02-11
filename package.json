@@ -1,0 +1,18 @@
+{
+  "name": "next-installation",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Kacim Fedjkhi <kacim.fedjkhi@student.howest.be",
+  "license": "MIT",
+  "scripts": {
+    "start": "cd server/ && yarn && yarn start",
+    "build": "cd client/ && yarn && yarn build"
+  },
+  "cacheDirectories": [
+    "client/node_modules",
+    "server/node_modules"
+  ],
+  "engines": {
+    "node": "10.14.2"
+  }
+}

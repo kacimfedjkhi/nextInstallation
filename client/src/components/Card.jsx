@@ -18,6 +18,7 @@ import newsOverlay from "../assets/img/overlays/newsOverlay.png";
 import tourismOverlay from "../assets/img/overlays/tourismOverlay.png";
 
 const Card = props => {
+<<<<<<< HEAD
   const getOverlay = theme => {
     return overlays[theme];
   };
@@ -30,6 +31,9 @@ const Card = props => {
     culinary: culinaryOverlay,
     tourism: tourismOverlay
   };
+=======
+  const getOverlay = theme => {};
+>>>>>>> master
 
   return (
     <>
