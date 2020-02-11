@@ -11,8 +11,5 @@
   "cacheDirectories": [
     "client/node_modules",
     "server/node_modules"
-  ],
-  "engines": {
-    "node": "10.14.2"
-  }
+  ]
 }
