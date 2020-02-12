@@ -9,6 +9,7 @@ exports.create = async (req, res) => {
       //add card data
       theme: req.body.theme,
       text: req.body.text,
+      image: req.body.image,
       locationCreated: req.body.locationCreated,
       locations: req.body.locations,
       answers: req.body.answers,

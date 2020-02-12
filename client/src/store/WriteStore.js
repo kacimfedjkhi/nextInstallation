@@ -67,6 +67,7 @@ class WriteStore {
     const card = new Card(
       this.theme,
       this.message,
+      this.image,
       this.rootStore.uiStore.selectedLocation,
       [],
       [],

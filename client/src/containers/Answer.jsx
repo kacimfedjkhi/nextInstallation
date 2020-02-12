@@ -47,6 +47,7 @@ const Answer = ({ openStore, writeStore, uiStore, history }) => {
           theme={card.theme}
           message={card.text}
           answers={card.answers}
+          image={card.image}
           locations={card.locations}
           locationCreated={card.locationCreated}
           writeStore={writeStore}

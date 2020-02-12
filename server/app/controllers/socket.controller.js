@@ -14,6 +14,7 @@ module.exports = server => {
           //add card data
           theme: data.theme,
           text: data.text,
+          image: data.image,
           locationCreated: data.locationCreated,
           locations: data.locations,
           answers: data.answers,
@@ -33,6 +34,7 @@ module.exports = server => {
         const card = new Card({
           theme: data.theme,
           text: data.text,
+          image: data.image,
           locationCreated: data.locationCreated,
           locations: data.locations,
           answers: data.answers,
