@@ -1,8 +1,6 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import { makeStyles } from "@material-ui/core/styles";
-
 import ReactCardFlip from "react-card-flip";
 
 import styled from "styled-components";
@@ -23,6 +21,12 @@ import techCard from "../assets/img/cardFronts/techCard.png";
 import newsCard from "../assets/img/cardFronts/newsCard.png";
 import tourismCard from "../assets/img/cardFronts/tourismCard.png";
 import cardFront from "../assets/img/cardFronts/emptyCard.png";
+
+import image1 from "../assets/img/cardImages/img1.png";
+import image2 from "../assets/img/cardImages/img2.png";
+import image3 from "../assets/img/cardImages/img3.png";
+import image4 from "../assets/img/cardImages/img4.png";
+import image5 from "../assets/img/cardImages/img5.png";
 
 const Card = props => {
   const getOverlay = theme => {
@@ -45,6 +49,8 @@ const Card = props => {
     news: newsCard,
     tourism: tourismCard
   };
+
+  const images = [image1, image2, image3, image4, image5];
 
   const overlays = {
     news: newsOverlay,
@@ -82,7 +88,10 @@ const Card = props => {
             <LocationCreated>{props.locationCreated}</LocationCreated>
           ) : null}
         </Front>
-        <Back img={props.image} overlay={getOverlay(props.theme)}></Back>
+        <Back
+          img={images[props.image]}
+          overlay={getOverlay(props.theme)}
+        ></Back>
       </ReactCardFlip>
     </>
   );

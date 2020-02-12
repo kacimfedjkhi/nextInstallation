@@ -13,7 +13,7 @@ import steps from "../assets/img/steps/steps_1.png";
 import steps2 from "../assets/img/steps/steps_2.png";
 import steps3 from "../assets/img/steps/steps_3.png";
 
-import kortrijkImage from "../assets/img/cardImages/kortrijkImage.png";
+import imageButton from "../assets/img/imageChange.png";
 
 const Write = ({ writeStore, uiStore }) => {
   const activeStep = writeStore.activeStep;
@@ -51,19 +51,30 @@ const Write = ({ writeStore, uiStore }) => {
   return (
     <StyledPage>
       <RowLayout>
-        <InputSection>
+        <div>
           <Steps img={getSteps(activeStep)}>
             <p>Current step: {activeStep}</p>
           </Steps>
           <StepTitle>{writeStore.getStepTitle(activeStep)}</StepTitle>
           {renderInput(activeStep)}
-        </InputSection>
+        </div>
         <CardSection>
+          <ChangeImage>
+            <div>
+              <p>
+                Kies een
+                <br /> andere foto
+              </p>
+              <p>foto {writeStore.image + 1} /5</p>
+            </div>
+
+            <ImageButton onClick={writeStore.handleChangeImage} />
+          </ChangeImage>
           <Card
             isFlipped={writeStore.cardFlipped}
             theme={writeStore.theme}
             message={writeStore.message}
-            image={kortrijkImage}
+            image={writeStore.image}
             store={writeStore}
             locationCreated={uiStore.selectedLocation}
           />
@@ -117,7 +128,26 @@ const CardSection = styled.div`
   top: 5rem;
 `;
 
-const InputSection = styled.div``;
+const ChangeImage = styled.div`
+  display: flex;
+
+  & div p {
+    text-align: right;
+    font-weight: bold;
+    color: #505587;
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+`;
+
+const ImageButton = styled.button`
+  border: none;
+  background-color: transparent;
+  background-image: url(${imageButton});
+  background-size: contain;
+  width: 8rem;
+  height: 8rem;
+`;
 
 Write.propTypes = {
   writeStore: PropTypes.observableObject.isRequired

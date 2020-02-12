@@ -6,6 +6,7 @@ import Card from "../models/Card";
 
 class WriteStore {
   activeStep = 0;
+  image = 0;
   theme = "";
   message = "";
   uniqueId = "";
@@ -116,12 +117,21 @@ class WriteStore {
 
     return img;
   };
+
+  handleChangeImage = () => {
+    if (this.image < 4) {
+      this.image++;
+    } else {
+      this.image = 0;
+    }
+  };
 }
 
 decorate(WriteStore, {
   activeStep: observable,
   theme: observable,
   message: observable,
+  image: observable,
   inputMethod: observable,
   cardFlipped: observable,
   setActiveStep: action,
@@ -130,7 +140,8 @@ decorate(WriteStore, {
   sendCard: action,
   emptyValues: action,
   handleClickTheme: action,
-  getImg: action
+  getImg: action,
+  handleChangeImage: action
 });
 
 export default WriteStore;
