@@ -59,17 +59,22 @@ const Write = ({ writeStore, uiStore }) => {
           {renderInput(activeStep)}
         </div>
         <CardSection>
-          <ChangeImage>
-            <div>
-              <p>
-                Kies een
-                <br /> andere foto
-              </p>
-              <p>foto {writeStore.image + 1} /5</p>
-            </div>
+          {activeStep == 0 ? (
+            <ChangeImage>
+              <div>
+                <ImageText>
+                  Kies een
+                  <br /> andere foto
+                </ImageText>
+                <ImageCount>
+                  foto <span>{writeStore.image + 1}</span> /5
+                </ImageCount>
+              </div>
 
-            <ImageButton onClick={writeStore.handleChangeImage} />
-          </ChangeImage>
+              <ImageButton onClick={writeStore.handleChangeImage} />
+            </ChangeImage>
+          ) : null}
+
           <Card
             isFlipped={writeStore.cardFlipped}
             theme={writeStore.theme}
@@ -130,13 +135,31 @@ const CardSection = styled.div`
 
 const ChangeImage = styled.div`
   display: flex;
+  position: relative;
+  top: 2rem;
+  left: 30rem;
 
-  & div p {
-    text-align: right;
+  & div {
+    margin-right: 2rem;
+  }
+`;
+
+const ImageText = styled.p`
+  text-align: right;
+  font-weight: bold;
+  color: #505587;
+  font-size: 2rem;
+  line-height: 2.5rem;
+  margin-bottom: 0.6rem;
+`;
+
+const ImageCount = styled.p`
+  color: #8089ce;
+  text-align: right;
+  font-weight: 600;
+
+  & span {
     font-weight: bold;
-    color: #505587;
-    font-size: 2rem;
-    line-height: 2.5rem;
   }
 `;
 
@@ -147,6 +170,11 @@ const ImageButton = styled.button`
   background-size: contain;
   width: 8rem;
   height: 8rem;
+
+  &:focus {
+    outline: none;
+    transform: scale(0.95);
+  }
 `;
 
 Write.propTypes = {

@@ -5,6 +5,7 @@ class Card {
   constructor(
     theme,
     text,
+    image,
     locationCreated,
     locations,
     answers,
@@ -14,6 +15,7 @@ class Card {
   ) {
     this.theme = theme;
     this.text = text;
+    this.image = image;
     this.locationCreated = locationCreated;
     this.locations = locations;
     this.answers = answers;
@@ -23,6 +25,7 @@ class Card {
   setId = id => (this.id = id);
   setTheme = theme => (this.theme = theme);
   setText = text => (this.text = text);
+  setImage = image => (this.image = image);
   setLocationCreated = locationCreated =>
     (this.locationCreated = locationCreated);
   setLocations = locations => (this.locations = locations);
@@ -37,6 +40,7 @@ class Card {
     this.setId(values._id);
     this.setTheme(values.theme);
     this.setText(values.text);
+    this.setImage(values.image);
     this.setLocationCreated(values.locationCreated);
     this.setLocations(values.locations);
     this.setAnswers(values.answers);
@@ -48,6 +52,7 @@ decorate(Card, {
   id: observable,
   theme: observable,
   text: observable,
+  image: observable,
   locationCreated: observable,
   locations: observable,
   answers: observable,

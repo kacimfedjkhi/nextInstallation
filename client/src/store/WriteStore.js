@@ -96,14 +96,6 @@ class WriteStore {
     let img;
     console.log(this.theme);
 
-    // if (this.rootStore.uiStore.userLanguage === "nl") {
-    //   this.theme == theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);
-    // } else {
-    //   this.theme == "" && theme.en === this.theme
-    //     ? (img = theme.fr[1])
-    //     : (img = theme.fr[0]);
-    // }
-
     switch (this.rootStore.uiStore.userLanguage) {
       case "nl":
         this.theme == theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);

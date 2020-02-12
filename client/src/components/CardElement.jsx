@@ -7,6 +7,13 @@ import { observer } from "mobx-react";
 
 import envelope from "../assets/img/envelope.png";
 
+import nature from "../assets/img/envelopes/nature.png";
+import news from "../assets/img/envelopes/news.png";
+import art from "../assets/img/envelopes/art.png";
+import culinary from "../assets/img/envelopes/culinary.png";
+import tourism from "../assets/img/envelopes/tourism.png";
+import technology from "../assets/img/envelopes/technology.png";
+
 const CardElement = props => {
   const getRotation = () => {
     let rotation = Math.floor(Math.random() * 11);
@@ -14,21 +21,6 @@ const CardElement = props => {
 
     return rotation;
   };
-
-  const CardContainer = styled.div`
-    position: absolute;
-  `;
-
-  const Card = styled.div`
-    width: 40rem;
-    height: 24.9rem;
-    display: inline-block;
-    position: absolute;
-    transform: rotate(${getRotation}deg);
-
-    background-image: url(${envelope});
-    background-size: cover;
-  `;
 
   let currentX, currentY, newX, newY;
 
@@ -59,6 +51,26 @@ const CardElement = props => {
     }
   };
 
+  const Card = styled.div`
+    width: 40rem;
+    height: 24.9rem;
+    display: inline-block;
+    position: absolute;
+    transform: rotate(${getRotation}deg);
+
+    background-image: url(${props => props.img});
+    background-size: cover;
+  `;
+
+  const images = {
+    news: news,
+    nature: nature,
+    culinary: culinary,
+    tourism: tourism,
+    technology: technology,
+    art: art
+  };
+
   return (
     <Draggable
       bounds="parent"
@@ -69,16 +81,19 @@ const CardElement = props => {
       <CardContainer>
         <Card
           id={props.data.uniqueId}
+          img={images[props.data.theme]}
           onMouseDown={e => handleMouseDown(e)}
           onMouseUp={e => handleMouseUp(e)}
         >
           {console.log(props.data)}
-          <p>{props.data.theme}</p>
-          <p>{props.data.text}</p>
         </Card>
       </CardContainer>
     </Draggable>
   );
 };
+
+const CardContainer = styled.div`
+  position: absolute;
+`;
 
 export default withRouter(observer(CardElement));
