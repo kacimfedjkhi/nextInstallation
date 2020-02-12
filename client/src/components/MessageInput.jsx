@@ -117,34 +117,34 @@ const KeyboardMessage = styled.p`
 
 const messages = {
   news: [
-    "Wat zijn de laatste nieuwtjes van jouw streek?",
-    "Wat moet iedereen weten over jouw streek?",
-    "Welke boodschap zou je graag delen met iedereen?"
+    "Waarmee is jouw streek voor het laatst in het nieuws gekomen?",
+    "Welk evenement staat er als volgende op je kalender?",
+    "Waarmee zou je graag in de krant komen?"
   ],
   nature: [
     "Wat is het mooiste natuurplekje in jouw streek?",
-    "Zou je liever meer of minder natuur in jouw streek zien?",
-    "Woon je liever in de stad of op het platteland?"
+    "Overheersen parken of fabrieken in jouw streek?",
+    "Zie je meer fietsers of wagens in het verkeer?"
   ],
   technology: [
-    "Is jouw streek eerder ouderwets of modern?",
     "Wat is jouw favoriete stukje technologie?",
-    "Hoelang zou jij zonder je smartphone kunnen"
+    "Is jouw streek eerder ouderwets of modern en op welk vlak?",
+    "Welke innovatieve ideeën worden er ondernomen in jouw streek?"
   ],
   culinary: [
-    "Wat is een typisch gerecht van jouw streek?",
-    "Wat zou iedereen wel eens gegeten moeten hebben?",
-    "Welk restaurant zou je aan iedereen aanraden?"
+    "Wat is een typisch streekgerecht?",
+    "Welk restaurant zou je aan iedereen aanraden?",
+    "Rond hoelaat is het gebruikelijk om te dineren volgens jou?"
   ],
   tourism: [
-    "Wat is uniek aan jouw streek?",
-    "Beschrijf jouw streek in 3 woorden.",
-    "Beschrijf de inwoners van jouw streek."
+    "Wat is een typische streekambacht?",
+    "Welke plek is het meest fotowaardig in jouw buurt?",
+    "Welke winkels zou je aanraden voor een dagje shoppen?"
   ],
   art: [
     "Kent jouw streek een bekende kunstenaar?",
-    "Kent jouw streek een bekende muzikant?",
-    "Beoefen jij een vorm van kunst?"
+    "Noem een kunstevenement dat plaatsvindt in jouw regio?",
+    "Hoe interpreteer jij het woord 'kunst'?"
   ]
 };
 
