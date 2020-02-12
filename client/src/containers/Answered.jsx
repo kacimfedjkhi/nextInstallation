@@ -8,6 +8,7 @@ import styled from "styled-components";
 import backgroundImage from "../assets/img/adminBg.jpg";
 import turqoiseBtn from "../assets/img/turqoiseBtn_s_dark.png";
 import textBubble from "../assets/img/textBubble_light.png";
+import nextArrow from "../assets/img/nextArrow.png";
 
 const Answered = ({ openStore, uiStore, history }) => {
   console.log(openStore.selectedCard);
@@ -53,7 +54,8 @@ const Answered = ({ openStore, uiStore, history }) => {
         </MoreTxt>
         <Link to={ROUTES.onboarding}>
           <WriteBtn onClick={handleClickWrite}>
-            Zelf een kaartje versturen
+            <span>Zelf een kaartje versturen</span>
+            <img src={nextArrow} width="30" alt="previous step arrow" />
           </WriteBtn>
         </Link>
       </MoreBtn>
@@ -157,6 +159,14 @@ const WriteBtn = styled.button`
   font-size: 2rem;
   font-family: "Nunito";
   font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-right: 1rem;
+  }
 
   &:focus {
     outline: none;

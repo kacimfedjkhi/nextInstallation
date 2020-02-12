@@ -83,7 +83,7 @@ const ButtonList = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  max-width: 60rem;
+  max-width: 57rem;
 `;
 
 const ThemeButton = styled.button`
@@ -94,7 +94,7 @@ const ThemeButton = styled.button`
   border: none;
   width: 18rem;
   height: 11rem;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 
   &:focus {
     outline: none;

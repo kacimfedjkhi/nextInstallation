@@ -6,6 +6,8 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 import purpleBtn from "../assets/img/purpleBtn_s.png";
 import greyBtn from "../assets/img/greyBtn_s.png";
+import nextArrow from "../assets/img/nextArrow.png";
+import prevArrow from "../assets/img/prevArrow.png";
 
 const BottomButtons = ({ writeStore, history }) => {
   const activeStep = writeStore.activeStep;
@@ -51,16 +53,16 @@ const BottomButtons = ({ writeStore, history }) => {
 
   switch (activeStep) {
     case 0:
-      prevBtn = "terug";
+      prevBtn = "Terug";
       nextBtn = "Boodschap toevoegen";
       break;
     case 1:
-      prevBtn = "thema wijzigen";
-      nextBtn = "kaartje controleren";
+      prevBtn = "Thema wijzigen";
+      nextBtn = "Kaartje controleren";
       break;
     case 2:
-      prevBtn = "boodschap wijzigen";
-      nextBtn = "kaartje versturen";
+      prevBtn = "Boodschap wijzigen";
+      nextBtn = "Kaartje versturen";
       break;
     default:
       return "Uw kaartje wordt verzonden";
@@ -71,10 +73,16 @@ const BottomButtons = ({ writeStore, history }) => {
       {activeStep < 4 ? (
         <>
           <PrevBtn onClick={handlePrev} opacity={activeStep > 0 ? "1" : "0"}>
-            {prevBtn}
+            <img src={prevArrow} width="30" alt="previous step arrow" />
+            <span>{prevBtn}</span>
           </PrevBtn>
 
-          {!disabled ? <NextBtn onClick={handleNext}>{nextBtn}</NextBtn> : null}
+          {!disabled ? (
+            <NextBtn onClick={handleNext}>
+              <span>{nextBtn}</span>
+              <img src={nextArrow} width="30" alt="previous step arrow" />
+            </NextBtn>
+          ) : null}
         </>
       ) : null}
     </BottomButtonsWrapper>
@@ -105,6 +113,16 @@ const NextBtn = styled.button`
   font-size: 2rem;
   font-weight: 600;
 
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-right: 1rem;
+  }
+
   &:focus {
     outline: none;
     transform: scale(0.95);
@@ -126,6 +144,14 @@ const PrevBtn = styled.button`
   font-family: "Nunito";
   font-size: 2rem;
   font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-left: 1rem;
+  }
 
   &:focus {
     outline: none;

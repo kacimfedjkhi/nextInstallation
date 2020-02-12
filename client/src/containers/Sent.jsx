@@ -9,6 +9,7 @@ import styled from "styled-components";
 import backgroundImage from "../assets/img/adminBg.jpg";
 import purpleBtn from "../assets/img/purpleBtn_s.png";
 import textBubble from "../assets/img/textBubble_purple.png";
+import nextArrow from "../assets/img/nextArrow.png";
 
 const Sent = ({ openStore, uiStore, writeStore }) => {
   const handleClickWrite = () => {
@@ -58,7 +59,8 @@ const Sent = ({ openStore, uiStore, writeStore }) => {
         </MoreTxt>
         <Link to={ROUTES.onboarding}>
           <WriteBtn onClick={handleClickWrite}>
-            Een kaartje beantwoorden
+            <span> Een kaartje beantwoorden</span>
+            <img src={nextArrow} width="30" alt="previous step arrow" />
           </WriteBtn>
         </Link>
       </MoreBtn>
@@ -162,6 +164,14 @@ const WriteBtn = styled.button`
   font-size: 2rem;
   font-family: "Nunito";
   font-weight: 600;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-right: 1rem;
+  }
 
   &:focus {
     outline: none;

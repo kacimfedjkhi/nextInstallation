@@ -11,7 +11,7 @@ import templateBg_dark from "../assets/img/templateBg_dark.png";
 import inputChoiceBg_dark from "../assets/img/inputChoiceBg_dark.png";
 import inputChoiceBg_light from "../assets/img/inputChoiceBg_light.png";
 
-const MessageInput = ({ writeStore }) => {
+const MessageInput = ({ writeStore, uiStore }) => {
   const handleClick = msg => {
     writeStore.message = msg;
   };
@@ -20,7 +20,7 @@ const MessageInput = ({ writeStore }) => {
 
   return (
     <>
-      <InputChoice>
+      <div>
         <InputChoiceBtn
           onClick={() => writeStore.handleChangeInput("templates")}
           img={
@@ -41,7 +41,7 @@ const MessageInput = ({ writeStore }) => {
         >
           eigen boodschap
         </InputChoiceBtn>
-      </InputChoice>
+      </div>
 
       <br />
       {input === "templates" ? (
@@ -54,7 +54,9 @@ const MessageInput = ({ writeStore }) => {
         </MessageList>
       ) : (
         <KeyboardMessage>
-          Start met typen en uw boodschap verschijnt direct op het postkaartje!
+          {uiStore.userLanguage === "nl"
+            ? "Start met typen en uw boodschap verschijnt direct op het postkaartje!"
+            : "Commencez à taper et votre message apparaîtra directement sur la carte postale !"}
         </KeyboardMessage>
       )}
       {input === "keyboard" ? <Keyboard store={writeStore} /> : null}
@@ -88,8 +90,6 @@ const MessageList = styled.div`
   flex-direction: column;
 `;
 
-const InputChoice = styled.div``;
-
 const InputChoiceBtn = styled.button`
   border: none;
   background-color: transparent;
@@ -111,7 +111,8 @@ const InputChoiceBtn = styled.button`
 const KeyboardMessage = styled.p`
   color: #8089ce;
   font-size: 2rem;
-  font-weight: 
+  font-weight: bold;
+  padding-top: 2rem;
 `;
 
 const messages = {
@@ -147,4 +148,4 @@ const messages = {
   ]
 };
 
-export default inject(`writeStore`)(observer(MessageInput));
+export default inject(`writeStore`, `uiStore`)(observer(MessageInput));

@@ -13,6 +13,10 @@ import backgroundImage from "../assets/img/onboardingBg.jpg";
 import purpleBtn from "../assets/img/purpleBtn_s.png";
 import turqoiseBtn from "../assets/img/turqoiseBtn_s.png";
 import greyBtn from "../assets/img/greyBtn_s.png";
+import nextArrow from "../assets/img/nextArrow.png";
+import prevArrow from "../assets/img/prevArrow.png";
+import prevArrowOpen from "../assets/img/prevArrow_turqoise.png";
+import euroCircle from "../assets/img/circles/euroCircle.png";
 
 const Onboarding = ({ uiStore }) => {
   console.log(uiStore.selectedAction);
@@ -56,19 +60,26 @@ const Onboarding = ({ uiStore }) => {
             img={greyBtn}
             txtColor={selectedAction === "write" ? "#8089ce" : "#4eb5bb"}
           >
-            Terug naar start
+            <img
+              src={selectedAction === "write" ? prevArrow : prevArrowOpen}
+              width="30"
+              alt="previous step arrow"
+            />
+            <span>Terug naar start</span>
           </Button>
         </Link>
         {selectedAction === "write" ? (
           <Link to={ROUTES.write}>
             <Button img={purpleBtn} txtColor={"white"}>
-              Verstuur een kaartje
+              <span>Verstuur een kaartje</span>
+              <img src={nextArrow} width="30" alt="previous step arrow" />
             </Button>
           </Link>
         ) : (
           <Link to={ROUTES.open}>
             <Button img={turqoiseBtn} txtColor={"white"}>
-              Open een kaartje
+              <span>Open een kaartje</span>
+              <img src={nextArrow} width="30" alt="previous step arrow" />
             </Button>
           </Link>
         )}
@@ -96,8 +107,19 @@ const Title = styled.h2`
   padding: 2rem 0;
   text-align: center;
 
-  && span {
+  & span {
     color: ${props => props.spanColor};
+    position: relative;
+
+    &:before {
+      content: "";
+      background-image: url(${euroCircle});
+      width: 42rem;
+      height: 14rem;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
   }
 `;
 
@@ -130,6 +152,14 @@ const Button = styled.button`
   font-size: 2rem;
   font-weight: bold;
   font-family: "Nunito";
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin: 0 1rem;
+  }
 
   &:focus {
     outline: none;

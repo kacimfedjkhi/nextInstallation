@@ -13,6 +13,8 @@ import turqoiseBtn from "../assets/img/turqoiseBtn_s_dark.png";
 import lightBtn from "../assets/img/lightBtn_s.png";
 import themeImgNl from "../assets/img/themeMessageBubble_nl.png";
 import themeImgFr from "../assets/img/themeMessageBubble_fr.png";
+import nextArrow from "../assets/img/nextArrow.png";
+import prevArrowOpen from "../assets/img/prevArrow_turqoise.png";
 
 const Answer = ({ openStore, writeStore, uiStore, history }) => {
   const card = openStore.showCard();
@@ -59,10 +61,14 @@ const Answer = ({ openStore, writeStore, uiStore, history }) => {
         {!openStore.answer ? (
           <>
             <AnswerBtn onClick={handleClickAnswer}>
-              Dit kaartje beantwoorden
+              <span>Dit kaartje beantwoorden</span>
+              <img src={nextArrow} width="30" alt="previous step arrow" />
             </AnswerBtn>
             <Link to={ROUTES.open}>
-              <ThrowbackBtn>Dit kaartje terug gooien</ThrowbackBtn>
+              <ThrowbackBtn>
+                <img src={prevArrowOpen} width="30" alt="previous step arrow" />
+                <span>Dit kaartje terug gooien</span>
+              </ThrowbackBtn>
             </Link>
           </>
         ) : null}
@@ -72,7 +78,8 @@ const Answer = ({ openStore, writeStore, uiStore, history }) => {
           <Keyboard store={openStore} />
           {openStore.message !== "" ? (
             <DoneBtn onClick={handleAnswerCard}>
-              Mijn antwoord toevoegen
+              <span>Mijn antwoord toevoegen</span>
+              <img src={nextArrow} width="30" alt="previous step arrow" />
             </DoneBtn>
           ) : null}
         </>
@@ -128,8 +135,8 @@ const AnswerBtn = styled.button`
   background-image: url(${turqoiseBtn});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 30rem;
-  height: 6rem;
+  width: 35rem;
+  height: 6.5rem;
 
   color: white;
   text-align: center;
@@ -137,6 +144,14 @@ const AnswerBtn = styled.button`
   font-family: "Nunito";
   font-weight: bold;
   margin-bottom: 0.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-right: 1rem;
+  }
 
   &:focus {
     transform: scale(0.95);
@@ -150,14 +165,22 @@ const ThrowbackBtn = styled.button`
   background-image: url(${lightBtn});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 27rem;
-  height: 5rem;
+  width: 32rem;
+  height: 6rem;
 
   color: #4da0a4;
   text-align: center;
   font-size: 2rem;
   font-family: "Nunito";
   font-weight: bold;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-left: 1rem;
+  }
 
   &:focus {
     transform: scale(0.95);
@@ -193,8 +216,8 @@ const DoneBtn = styled.button`
   background-image: url(${turqoiseBtn});
   background-size: contain;
   background-repeat: no-repeat;
-  width: 30rem;
-  height: 6rem;
+  width: 35rem;
+  height: 6.5rem;
 
   position: fixed;
   bottom: 5rem;
@@ -206,6 +229,14 @@ const DoneBtn = styled.button`
   font-family: "Nunito";
   font-weight: bold;
   margin-bottom: 1rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & span {
+    margin-right: 1rem;
+  }
 
   &:focus {
     transform: scale(0.95);

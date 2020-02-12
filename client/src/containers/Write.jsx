@@ -9,7 +9,9 @@ import MessageInput from "../components/MessageInput";
 import ControlCard from "../components/ControlCard";
 
 import backgroundImage from "../assets/img/choiceBg.png";
-import steps from "../assets/img/steps_1.png";
+import steps from "../assets/img/steps/steps_1.png";
+import steps2 from "../assets/img/steps/steps_2.png";
+import steps3 from "../assets/img/steps/steps_3.png";
 
 import kortrijkImage from "../assets/img/cardImages/kortrijkImage.png";
 
@@ -30,11 +32,27 @@ const Write = ({ writeStore, uiStore }) => {
     }
   };
 
+  const getSteps = active => {
+    switch (active) {
+      case 0:
+        return steps;
+        break;
+      case 1:
+        return steps2;
+        break;
+      case 2:
+        return steps3;
+        break;
+      default:
+        return steps;
+    }
+  };
+
   return (
     <StyledPage>
       <RowLayout>
         <InputSection>
-          <Steps img={steps}>
+          <Steps img={getSteps(activeStep)}>
             <p>Current step: {activeStep}</p>
           </Steps>
           <StepTitle>{writeStore.getStepTitle(activeStep)}</StepTitle>
@@ -74,8 +92,9 @@ const RowLayout = styled.section`
 const Steps = styled.div`
   background-image: url(${props => props.img});
   background-size: contain;
+  background-repeat: no-repeat;
   width: 55rem;
-  height: 11.5rem;
+  height: 13rem;
 
   & p {
     display: none;

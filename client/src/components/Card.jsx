@@ -6,9 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import ReactCardFlip from "react-card-flip";
 
 import styled from "styled-components";
-import cardFront from "../assets/img/cardFront.png";
-import cardBack from "../assets/img/cardBack_kortrijk.png";
-import flip from "../assets/img/flip.png";
+import flipWrite from "../assets/img/flipBtn_purple.png";
+import flipOpen from "../assets/img/flipBtn_turqoise.png";
 
 import natureOverlay from "../assets/img/overlays/natureOverlay.png";
 import techOverlay from "../assets/img/overlays/techOverlay.png";
@@ -17,9 +16,34 @@ import artOverlay from "../assets/img/overlays/artOverlay.png";
 import newsOverlay from "../assets/img/overlays/newsOverlay.png";
 import tourismOverlay from "../assets/img/overlays/tourismOverlay.png";
 
+import natureCard from "../assets/img/cardFronts/natureCard.png";
+import artCard from "../assets/img/cardFronts/artCard.png";
+import culinaryCard from "../assets/img/cardFronts/culinaryCard.png";
+import techCard from "../assets/img/cardFronts/techCard.png";
+import newsCard from "../assets/img/cardFronts/newsCard.png";
+import tourismCard from "../assets/img/cardFronts/tourismCard.png";
+import cardFront from "../assets/img/cardFronts/emptyCard.png";
+
 const Card = props => {
   const getOverlay = theme => {
     return overlays[theme];
+  };
+
+  const getFront = theme => {
+    if (props.writeStore.theme !== "") {
+      return fronts[theme];
+    } else {
+      return cardFront;
+    }
+  };
+
+  const fronts = {
+    nature: natureCard,
+    art: artCard,
+    culinary: culinaryCard,
+    technology: techCard,
+    news: newsCard,
+    tourism: tourismCard
   };
 
   const overlays = {
@@ -34,12 +58,15 @@ const Card = props => {
   return (
     <>
       <FlipBtn onClick={props.writeStore.handleFlipCard}>
-        <img width="60" src={flip} alt="Button to flip card" />
+        <img
+          width="60"
+          src={props.uiStore.selectedAction === "write" ? flipWrite : flipOpen}
+          alt="Button to flip card"
+        />
       </FlipBtn>
 
       <ReactCardFlip isFlipped={props.isFlipped} flipDirection="vertical">
-        <Front>
-          {props.theme ? <p>{props.theme}</p> : null}
+        <Front front={getFront(props.theme)}>
           <CardContent>
             {props.message ? <Message>{props.message}</Message> : null}
             <AnswerList>
@@ -62,12 +89,27 @@ const Card = props => {
 };
 
 const Front = styled.div`
-  background-image: url(${cardFront});
+  background-image: url(${props => props.front});
   background-size: contain;
+  background-repeat: no-repeat;
   width: 100rem;
   height: 66rem;
   transform: rotate(-5deg);
   position: relative;
+  overflow: hidden;
+
+  &:after {
+    content: "";
+    background-image: url(${props => props.stamp});
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    backgroun-color: pink;
+    bottom: 0;
+    right: 0;
+  }
 `;
 
 const Back = styled.div`
@@ -154,4 +196,4 @@ const CardContent = styled.div`
   padding: 6rem 0 0 5rem;
 `;
 
-export default inject(`writeStore`)(observer(Card));
+export default inject(`writeStore`, `uiStore`)(observer(Card));
