@@ -13,7 +13,7 @@ import nextArrow from "../assets/img/nextArrow.png";
 
 const Sent = ({ openStore, uiStore, writeStore }) => {
   const handleClickWrite = () => {
-    uiStore.selectedAction = "write";
+    uiStore.selectedAction = "open";
     writeStore.sendCard();
   };
 
