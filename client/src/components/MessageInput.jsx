@@ -70,8 +70,9 @@ const TemplateMessage = styled.button`
   background-image: url(${templateBg});
   background-size: contain;
   background-repeat: no-repeat;
-  height: 6.5rem;
+  height: 7rem;
   margin-bottom: 1rem;
+  padding: 2rem;
 
   color: #8089ce;
   font-family: "Nunito";
