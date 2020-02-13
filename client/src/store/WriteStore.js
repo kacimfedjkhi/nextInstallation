@@ -73,7 +73,6 @@ class WriteStore {
       [],
       this.uniqueId
     );
-    //await this.rootStore.openStore.cards.push(card);
     this.api.createCard(card);
 
     this.socket.emit(`sendCard`, card);

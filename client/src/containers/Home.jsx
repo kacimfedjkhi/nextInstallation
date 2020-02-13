@@ -8,6 +8,11 @@ import backgroundImage from "../assets/img/choiceBg.png";
 import writeImg from "../assets/img/writeImg.png";
 import openImg from "../assets/img/openImg.png";
 
+import startWrite_nl from "../assets/img/gifs/startWrite_nl.gif";
+import startWrite_fr from "../assets/img/gifs/startWrite_fr.gif";
+import startOpen_nl from "../assets/img/gifs/startOpen_nl.gif";
+import startOpen_fr from "../assets/img/gifs/startOpen_fr.gif";
+
 const Home = ({ uiStore }) => {
   const handleSetAction = e => {
     uiStore.selectedAction = e;
@@ -17,13 +22,17 @@ const Home = ({ uiStore }) => {
     <StyledPage>
       <Link to={ROUTES.onboarding}>
         <Button
-          img={writeImg}
+          img={uiStore.userLanguage === "nl" ? startWrite_nl : startWrite_fr}
           onClick={() => handleSetAction("write")}
         ></Button>
       </Link>
       <Link to={ROUTES.onboarding}>
-        <Button img={openImg} onClick={() => handleSetAction("open")}></Button>
+        <Button
+          img={uiStore.userLanguage === "nl" ? startOpen_nl : startOpen_fr}
+          onClick={() => handleSetAction("open")}
+        ></Button>
       </Link>
+      <Choice>Maak je keuze en deel je kennis!</Choice>
     </StyledPage>
   );
 };
@@ -52,6 +61,14 @@ const Button = styled.button`
     outline: none;
     transform: scale(0.95);
   }
+`;
+
+const Choice = styled.p`
+  position: absolute;
+  bottom: 10rem;
+  color: #7e88cb;
+  font-size: 2rem;
+  font-weight: bold;
 `;
 
 export default inject(`uiStore`)(observer(Home));

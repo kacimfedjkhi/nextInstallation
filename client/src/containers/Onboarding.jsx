@@ -18,6 +18,9 @@ import prevArrow from "../assets/img/prevArrow.png";
 import prevArrowOpen from "../assets/img/prevArrow_turqoise.png";
 import euroCircle from "../assets/img/circles/euroCircle.png";
 
+import euroWrite from "../assets/img/gifs/euroWrite_nl.gif";
+import euroOpen from "../assets/img/gifs/euroOpen_nl.gif";
+
 const Onboarding = ({ uiStore }) => {
   console.log(uiStore.selectedAction);
 
@@ -47,8 +50,8 @@ const Onboarding = ({ uiStore }) => {
           : `Open dan snel een kaartje en deel uw regionale kennis!`}
       </Baseline>
       <img
-        src={selectedAction === "write" ? mapPurple : mapTurqoise}
-        width="800"
+        src={selectedAction === "write" ? euroWrite : euroOpen}
+        width="1000"
         alt=""
       />
 
