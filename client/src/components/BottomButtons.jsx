@@ -96,7 +96,7 @@ const BottomButtonsWrapper = styled.div`
 
   display: flex;
   justify-content: space-between;
-  width: 90%;
+  width: 95%;
 `;
 
 const NextBtn = styled.button`

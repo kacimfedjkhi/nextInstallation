@@ -29,29 +29,30 @@ const ControlCard = ({ writeStore, uiStore }) => {
 const EnveloppeBg = styled.div`
   background-image: url(${enveloppe});
   background-size: cover;
-  width: 90rem;
-  height: 70rem;
+  width: 100rem;
+  height: 85rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
 
   & div {
     position: relative;
     left: -5rem;
+    top: -5rem;
   }
 `;
 
 const ControlTitle = styled.h2`
   color: white;
   font-family: "Nunito";
-  font-size: 3rem;
-  font-weight: bold;
-  line-height: 4rem;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 5rem;
   margin-bottom: 3rem;
 `;
 

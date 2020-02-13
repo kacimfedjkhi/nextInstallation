@@ -47,7 +47,7 @@ const Onboarding = ({ uiStore }) => {
           ? `Schrijf het op een postkaartje en stuur uw regionale kennis uit.`
           : `Open dan snel een kaartje en deel uw regionale kennis!`}
       </Baseline>
-      <img
+      <StyledImg
         src={selectedAction === "write" ? euroWrite : euroOpen}
         width="1000"
         alt=""
@@ -104,6 +104,7 @@ const Title = styled.h2`
   font-weight: bold;
   color: ${props => props.txtColor};
   font-size: 4rem;
+  line-height: 5rem;
   max-width: 90rem;
   padding: 2rem 0;
   text-align: center;
@@ -111,16 +112,6 @@ const Title = styled.h2`
   & span {
     color: ${props => props.spanColor};
     position: relative;
-
-    &:before {
-      content: "";
-      background-image: url(${euroCircle});
-      width: 42rem;
-      height: 14rem;
-      position: absolute;
-      left: 0;
-      top: 0;
-    }
   }
 `;
 
@@ -135,9 +126,13 @@ const Baseline = styled.h2`
 const ButtonWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 93%;
   position: absolute;
   bottom: 5rem;
+`;
+
+const StyledImg = styled.img`
+  transform: scale(1.5);
 `;
 
 const Button = styled.button`

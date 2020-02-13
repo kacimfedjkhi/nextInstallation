@@ -28,7 +28,7 @@ const MessageInput = ({ writeStore, uiStore }) => {
               : inputChoiceBg_light
           }
         >
-          sjablonen
+          Sjablonen
         </InputChoiceBtn>
         <InputChoiceBtn
           onClick={() => writeStore.handleChangeInput("keyboard")}
@@ -38,7 +38,7 @@ const MessageInput = ({ writeStore, uiStore }) => {
               : inputChoiceBg_light
           }
         >
-          eigen boodschap
+          Eigen boodschap
         </InputChoiceBtn>
       </div>
 
@@ -98,6 +98,8 @@ const InputChoiceBtn = styled.button`
   background-repeat: no-repeat;
   width: 30rem;
   height: 6rem;
+
+  font-family: "Nunito";
 
   font-size: 2.5rem;
   color: white;

@@ -47,14 +47,14 @@ const Write = ({ writeStore, uiStore }) => {
 
   return (
     <StyledPage>
+      <Steps img={getSteps(activeStep)}>
+        <p>Current step: {activeStep}</p>
+      </Steps>
       <RowLayout>
-        <div>
-          <Steps img={getSteps(activeStep)}>
-            <p>Current step: {activeStep}</p>
-          </Steps>
+        <InputSection>
           <StepTitle>{writeStore.getStepTitle(activeStep)}</StepTitle>
           {renderInput(activeStep)}
-        </div>
+        </InputSection>
         <CardSection>
           {activeStep === 0 ? (
             <ChangeImage>
@@ -109,6 +109,10 @@ const Steps = styled.div`
   width: 55rem;
   height: 13rem;
 
+  position: absolute;
+  top: 5rem;
+  left: 5rem;
+
   & p {
     display: none;
   }
@@ -125,9 +129,9 @@ const StepTitle = styled.h2`
 `;
 
 const CardSection = styled.div`
-  position: relative;
-  right: -10rem;
-  top: 5rem;
+  position: absolute;
+  right: 7rem;
+  top: 17rem;
 `;
 
 const ChangeImage = styled.div`
@@ -139,6 +143,12 @@ const ChangeImage = styled.div`
   & div {
     margin-right: 2rem;
   }
+`;
+
+const InputSection = styled.div`
+  position: absolute;
+  top: 30rem;
+  left: 20rem;
 `;
 
 const ImageText = styled.p`

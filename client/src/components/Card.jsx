@@ -145,12 +145,14 @@ const Back = styled.div`
 const Message = styled.p`
   font-family: "Aracne";
   font-size: 4.5rem;
+  line-height: 5.5rem;
   max-width: 35rem;
   transform: rotate(-6deg);
   font-style: italic;
   color: #8089ce;
   font-weight: bolder;
   margin-bottom: 3rem;
+  letter-spacing: 0.2rem;
 `;
 
 const LocationCreated = styled.p`
@@ -202,7 +204,7 @@ const CardContent = styled.div`
 
   width: 45rem;
   height: 50rem;
-  padding: 6rem 0 0 5rem;
+  padding: 10rem 0 0 8rem;
 `;
 
 export default inject(`writeStore`, `uiStore`)(observer(Card));
