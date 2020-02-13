@@ -5,8 +5,6 @@ import { withRouter } from "react-router-dom";
 import { ROUTES } from "../constants/index";
 import { observer } from "mobx-react";
 
-import envelope from "../assets/img/envelope.png";
-
 import nature from "../assets/img/envelopes/nature.png";
 import news from "../assets/img/envelopes/news.png";
 import art from "../assets/img/envelopes/art.png";

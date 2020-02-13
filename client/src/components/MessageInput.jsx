@@ -3,7 +3,6 @@ import { inject, observer } from "mobx-react";
 import Keyboard from "./KeyboardInput";
 
 import styled from "styled-components";
-import Button from "@material-ui/core/Button";
 
 import templateBg from "../assets/img/templateBg.png";
 import templateBg_dark from "../assets/img/templateBg_dark.png";

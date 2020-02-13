@@ -7,8 +7,6 @@ import styled from "styled-components";
 import { ROUTES } from "../constants";
 import InfoModal from "../components/InfoModal";
 
-import mapPurple from "../assets/img/mapPurple.png";
-import mapTurqoise from "../assets/img/mapTurqoise.png";
 import backgroundImage from "../assets/img/onboardingBg.jpg";
 import purpleBtn from "../assets/img/purpleBtn_s.png";
 import turqoiseBtn from "../assets/img/turqoiseBtn_s.png";

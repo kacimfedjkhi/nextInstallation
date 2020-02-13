@@ -36,13 +36,10 @@ const Write = ({ writeStore, uiStore }) => {
     switch (active) {
       case 0:
         return steps;
-        break;
       case 1:
         return steps2;
-        break;
       case 2:
         return steps3;
-        break;
       default:
         return steps;
     }
@@ -59,7 +56,7 @@ const Write = ({ writeStore, uiStore }) => {
           {renderInput(activeStep)}
         </div>
         <CardSection>
-          {activeStep == 0 ? (
+          {activeStep === 0 ? (
             <ChangeImage>
               <div>
                 <ImageText>

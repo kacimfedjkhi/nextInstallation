@@ -98,10 +98,10 @@ class WriteStore {
 
     switch (this.rootStore.uiStore.userLanguage) {
       case "nl":
-        this.theme == theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);
+        this.theme === theme.en ? (img = theme.nl[1]) : (img = theme.nl[0]);
         break;
       case "fr":
-        this.theme == theme.en ? (img = theme.fr[1]) : (img = theme.fr[0]);
+        this.theme === theme.en ? (img = theme.fr[1]) : (img = theme.fr[0]);
         break;
       default:
         img = "";

@@ -5,8 +5,6 @@ import { inject, observer } from "mobx-react";
 
 import styled from "styled-components";
 import backgroundImage from "../assets/img/choiceBg.png";
-import writeImg from "../assets/img/writeImg.png";
-import openImg from "../assets/img/openImg.png";
 
 import startWrite_nl from "../assets/img/gifs/startWrite_nl.gif";
 import startWrite_fr from "../assets/img/gifs/startWrite_fr.gif";

@@ -1,15 +1,14 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import UIStore from "../store/UIStore";
 import styled from "styled-components";
 
 import enveloppe from "../assets/img/controlCardBg.png";
 
 const ControlCard = ({ writeStore, uiStore }) => {
-  const handleClickTheme = e => {
-    writeStore.theme = e;
-  };
+  // const handleClickTheme = e => {
+  //   writeStore.theme = e;
+  // };
 
   return (
     <EnveloppeBg>

@@ -1,7 +1,6 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 
-import UIStore from "../store/UIStore";
 import styled from "styled-components";
 
 import actualiteit from "../assets/img/themes/actualiteit.png";
@@ -56,7 +55,7 @@ const ThemesList = ({ writeStore, uiStore }) => {
     },
     {
       nl: [natuur, natuurSelected],
-      fr: [nature, natuurSelected],
+      fr: [nature, natureSelected],
       en: "nature"
     },
     {
