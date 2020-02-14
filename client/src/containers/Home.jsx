@@ -11,6 +11,9 @@ import startWrite_fr from "../assets/img/gifs/startWrite_fr.gif";
 import startOpen_nl from "../assets/img/gifs/startOpen_nl.gif";
 import startOpen_fr from "../assets/img/gifs/startOpen_fr.gif";
 
+import nlActive from "../assets/img/language/nlActive.png";
+import fr from "../assets/img/language/fr.png";
+
 const Home = ({ uiStore }) => {
   const handleSetAction = e => {
     uiStore.selectedAction = e;
@@ -18,6 +21,14 @@ const Home = ({ uiStore }) => {
 
   return (
     <StyledPage>
+      <LanguageBtns>
+        <LanguageBtn onClick={() => uiStore.toggleLanguage("nl")}>
+          <img src={uiStore.userLanguage === "nl" ? nlActive : fr} alt="" />
+        </LanguageBtn>
+        <LanguageBtn onClick={() => uiStore.toggleLanguage("fr")}>
+          <img src={uiStore.userLanguage === "fr" ? nlActive : fr} alt="" />
+        </LanguageBtn>
+      </LanguageBtns>
       <Link to={ROUTES.onboarding}>
         <Button
           img={uiStore.userLanguage === "nl" ? startWrite_nl : startWrite_fr}
@@ -67,6 +78,21 @@ const Choice = styled.p`
   color: #7e88cb;
   font-size: 2rem;
   font-weight: bold;
+`;
+
+const LanguageBtns = styled.div`
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+`;
+
+const LanguageBtn = styled.button`
+  border: none;
+  background-color: transparent;
+
+  &:focus {
+    outline: none;
+  }
 `;
 
 export default inject(`uiStore`)(observer(Home));

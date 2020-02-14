@@ -45,7 +45,10 @@ const Answered = ({ openStore, uiStore, history }) => {
           : "et voyez ce que les autres ont à dire !"}
       </Others>
       <Codes>
-        <QRCode value={`index.html/${openStore.selectedCard}`} size="110" />
+        <QRCode
+          value={`connext-track-and-trace.herokuapp.com/${openStore.selectedCard}`}
+          size="210"
+        />
         <UniqueId>{openStore.selectedCard}</UniqueId>
       </Codes>
       <MoreBtn>

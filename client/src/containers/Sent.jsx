@@ -50,7 +50,10 @@ const Sent = ({ openStore, uiStore, writeStore }) => {
           : "et voyez votre carte postale complétée par les connaissances de l'Eurométropole!"}
       </Others>
       <Codes>
-        <QRCode value={`index.html/${writeStore.uniqueId}`} size="210" />
+        <QRCode
+          value={`connext-track-and-trace.herokuapp.com/${writeStore.uniqueId}`}
+          size="210"
+        />
         <UniqueId>{writeStore.uniqueId}</UniqueId>
       </Codes>
       <MoreBtn>

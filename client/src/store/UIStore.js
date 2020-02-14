@@ -89,6 +89,10 @@ class UIStore {
   handleToggleModal = () => {
     this.modal ? (this.modal = false) : (this.modal = true);
   };
+
+  toggleLanguage = language => {
+    this.userLanguage = language;
+  };
 }
 
 decorate(UIStore, {
@@ -104,7 +108,8 @@ decorate(UIStore, {
   setUserLanguage: action,
   changeLocationType: action,
   toggleCheckedEvent: action,
-  addEventName: action
+  addEventName: action,
+  toggleLanguage: action
 });
 
 export default UIStore;
