@@ -5,8 +5,9 @@ import styled from "styled-components";
 import { inject, observer } from "mobx-react";
 
 const Div = styled.div`
-  width: 50%;
-  position: absolute;
+  width: 100rem;
+  position: fixed;
+  left: 5rem;
   bottom: 2rem;
   margin: 0 auto;
   z-index: 1000;
