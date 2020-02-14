@@ -27,7 +27,7 @@ const Sent = ({ openStore, uiStore, writeStore }) => {
     <StyledPage>
       <ThankLine>
         {uiStore.userLanguage === "nl"
-          ? "Bedankt, je kaartje is met succes verzonden."
+          ? "Bedankt, je kaartje is met succes verzonden"
           : "Merci d'avoir répondu à cette carte"}
         !
       </ThankLine>
@@ -81,29 +81,30 @@ const StyledPage = styled.section`
 `;
 
 const ThankLine = styled.p`
-  color: #4eb5bb;
+  color: #8089ce;
   font-size: 2.5rem;
   font-family: "Nunito";
   font-weight: 600;
 `;
 
 const Follow = styled.h2`
-  color: #4eb5bb;
+  color: #8089ce;
   font-size: 3.5rem;
   font-family: "Nunito";
   font-weight: bold;
-  padding: 2.5rem 0 1rem 0;
+  padding: 3.5rem 0 2rem 0;
 
   & span {
-    color: #4da0a4;
+    color: #4e5587;
   }
 `;
 
 const Others = styled.p`
-  color: #4da0a4;
+  color: #8089ce;
   font-size: 2.5rem;
   font-family: "Nunito";
   font-weight: 600;
+  padding-bottom: 4rem;
 `;
 
 const Codes = styled.div`
@@ -115,7 +116,7 @@ const Codes = styled.div`
 `;
 
 const UniqueId = styled.p`
-  color: #4da0a4;
+  color: #4e5587;
   font-size: 2.5rem;
   font-family: "Nunito";
   font-weight: bold;
@@ -124,8 +125,8 @@ const UniqueId = styled.p`
 
 const MoreBtn = styled.div`
   position: absolute;
-  right: 2rem;
-  bottom: 2rem;
+  right: 5rem;
+  bottom: 5rem;
 `;
 
 const MoreTxt = styled.div`
@@ -141,10 +142,12 @@ const MoreTxt = styled.div`
   & p {
     color: white;
     font-size: 2rem;
+    line-height: 2.5rem;
     font-family: "Nunito";
     font-weight: bold;
     transform: rotate(-6deg);
     max-width: 20rem;
+    text-align: center;
     position: relative;
     top: 4rem;
     left: 3rem;

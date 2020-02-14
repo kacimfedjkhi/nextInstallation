@@ -39,8 +39,8 @@ const StyledPage = styled.section`
 const SwipeGesture = styled.div`
   display: inline;
   position: fixed;
-  right: 2rem;
-  bottom: 2rem;
+  right: 5rem;
+  bottom: 5rem;
   width: 30rem;
   height: 20rem;
 `;

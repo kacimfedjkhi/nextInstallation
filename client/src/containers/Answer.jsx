@@ -56,8 +56,18 @@ const Answer = ({ openStore, writeStore, uiStore, history }) => {
       </CardWrapper>
       <Buttons>
         <LocationAmount>
-          Dit kaartje werd al op
-          <br /> {card.answers.length} andere locaties beantwoord.
+          {card.answers.length > 0 ? (
+            <>
+              Dit kaartje werd al op
+              <br /> <span>{card.answers.length} andere locaties</span>{" "}
+              beantwoord.
+            </>
+          ) : (
+            <>
+              Beantwoord als eerste dit kaartje
+              <br /> en deel je kennis!
+            </>
+          )}
         </LocationAmount>
         {!openStore.answer ? (
           <>
@@ -68,7 +78,7 @@ const Answer = ({ openStore, writeStore, uiStore, history }) => {
             <Link to={ROUTES.open}>
               <ThrowbackBtn>
                 <img src={prevArrowOpen} width="30" alt="previous step arrow" />
-                <span>Dit kaartje terug gooien</span>
+                <span>Dit kaartje teruggooien</span>
               </ThrowbackBtn>
             </Link>
           </>
@@ -121,8 +131,8 @@ const CardWrapper = styled.div`
 
 const Buttons = styled.div`
   position: absolute;
-  top: 55%;
-  left: 23rem;
+  top: 50%;
+  left: 20rem;
 
   display: flex;
   flex-direction: column;
@@ -144,7 +154,7 @@ const AnswerBtn = styled.button`
   font-size: 2rem;
   font-family: "Nunito";
   font-weight: bold;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
 
   display: flex;
   justify-content: center;
@@ -255,7 +265,11 @@ const LocationAmount = styled.p`
   text-align: center;
   font-size: 2rem;
   font-weight: bold;
-  padding-bottom: 2rem;
+  padding-bottom: 4rem;
+
+  & span {
+    font-weight: bold;
+  }
 `;
 
 Answer.propTypes = {

@@ -87,7 +87,7 @@ const Follow = styled.h2`
   font-size: 3.5rem;
   font-family: "Nunito";
   font-weight: bold;
-  padding: 2.5rem 0 1rem 0;
+  padding: 3.5rem 0 2rem 0;
 
   & span {
     color: #4da0a4;
@@ -99,6 +99,7 @@ const Others = styled.p`
   font-size: 2.5rem;
   font-family: "Nunito";
   font-weight: 600;
+  padding-bottom: 4rem;
 `;
 
 const Codes = styled.div`
@@ -119,8 +120,8 @@ const UniqueId = styled.p`
 
 const MoreBtn = styled.div`
   position: absolute;
-  right: 2rem;
-  bottom: 2rem;
+  right: 5rem;
+  bottom: 5rem;
 `;
 
 const MoreTxt = styled.div`
