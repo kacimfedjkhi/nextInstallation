@@ -67,7 +67,6 @@ const InfoModal = ({ uiStore }) => {
               samenwerking wordt ondersteund door <span>NEXT festival</span>,
               een jaarlijks kunstenfestival dat in elke regio plaatsvindt.
             </TextContent>
-            <button onClick={uiStore.handleToggleModal}></button>
           </StyledModal>
         </Fade>
       </Modal>
