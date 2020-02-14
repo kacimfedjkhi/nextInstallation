@@ -85,7 +85,7 @@ const Onboarding = ({ uiStore }) => {
                 txtColor={"white"}
                 onClick={() => setCount(1)}
               >
-                <span>Ik wil een kaartje schrijven!</span>
+                <span>Postkaartje schrijven!</span>
                 <img src={nextArrow} width="30" alt="previous step arrow" />
               </Button>
             ) : (
@@ -94,7 +94,7 @@ const Onboarding = ({ uiStore }) => {
                 txtColor={"white"}
                 onClick={() => setCount(1)}
               >
-                <span>Ik wil een kaartje openen!</span>
+                <span>Postkaartje openen!</span>
                 <img src={nextArrow} width="30" alt="previous step arrow" />
               </Button>
             )}
