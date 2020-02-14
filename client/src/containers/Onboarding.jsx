@@ -15,6 +15,9 @@ import nextArrow from "../assets/img/nextArrow.png";
 import prevArrow from "../assets/img/prevArrow.png";
 import prevArrowOpen from "../assets/img/prevArrow_turqoise.png";
 
+import infoWrite from "../assets/img/infoWrite.png";
+import infoOpen from "../assets/img/infoOpen.png";
+
 import euroWrite from "../assets/img/gifs/euroWrite_nl.gif";
 import euroOpen from "../assets/img/gifs/euroOpen_nl.gif";
 import onboardingWrite from "../assets/img/gifs/onboardingWrite.gif";
@@ -57,10 +60,16 @@ const Onboarding = ({ uiStore }) => {
               ? `Schrijf het op een postkaartje en stuur uw regionale kennis uit.`
               : `Open dan snel een kaartje en deel uw regionale kennis!`}
           </Baseline>
+
           <StyledImg
             src={selectedAction === "write" ? euroWrite : euroOpen}
             width="1000"
             alt=""
+          />
+          <InfoBtn
+            src={selectedAction === "write" ? infoWrite : infoOpen}
+            width="250"
+            onClick={uiStore.handleToggleModal}
           />
 
           <InfoModal />
@@ -210,6 +219,12 @@ const ButtonWrapper = styled.div`
 
 const StyledImg = styled.img`
   transform: scale(1.5);
+`;
+
+const InfoBtn = styled.img`
+  position: absolute;
+  top: 30rem;
+  right: 65rem;
 `;
 
 const Button = styled.button`

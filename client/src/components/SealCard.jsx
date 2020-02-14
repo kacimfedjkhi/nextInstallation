@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { inject, observer, PropTypes } from "mobx-react";
-import { withRouter, Link } from "react-router-dom";
-import { ROUTES } from "../constants";
+import { withRouter } from "react-router-dom";
 import shortid from "shortid";
-import QRCode from "qrcode.react";
 
 import styled from "styled-components";
 import backgroundImage from "../assets/img/choiceBg.png";
@@ -35,11 +33,6 @@ const SealCard = ({ openStore, uiStore, writeStore }) => {
   };
 
   const [img, setImg] = useState(images[writeStore.theme][0]);
-
-  const handleClickWrite = () => {
-    uiStore.selectedAction = "open";
-    writeStore.sendCard();
-  };
 
   const getUniqueKey = () => {
     return shortid.generate();

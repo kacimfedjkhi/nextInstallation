@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 import { withRouter, Link } from "react-router-dom";
 import { ROUTES } from "../constants";
@@ -14,8 +14,6 @@ import textBubble from "../assets/img/textBubble_purple.png";
 import nextArrow from "../assets/img/nextArrow.png";
 
 const Sent = ({ openStore, uiStore, writeStore }) => {
-  const [count, setCount] = useState(0);
-
   const handleClickWrite = () => {
     uiStore.selectedAction = "open";
     writeStore.sendCard();
