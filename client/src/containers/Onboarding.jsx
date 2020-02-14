@@ -18,11 +18,6 @@ import prevArrowOpen from "../assets/img/prevArrow_turqoise.png";
 import infoWrite from "../assets/img/infoWrite.png";
 import infoOpen from "../assets/img/infoOpen.png";
 
-import euroWrite from "../assets/img/gifs/euroWrite_nl.gif";
-import euroOpen from "../assets/img/gifs/euroOpen_nl.gif";
-import onboardingWrite from "../assets/img/gifs/onboardingWrite.gif";
-import onboardingOpen from "../assets/img/gifs/onboardingOpen.gif";
-
 const Onboarding = ({ uiStore }) => {
   console.log(uiStore.selectedAction);
 
@@ -62,7 +57,11 @@ const Onboarding = ({ uiStore }) => {
           </Baseline>
 
           <StyledImg
-            src={selectedAction === "write" ? euroWrite : euroOpen}
+            src={
+              selectedAction === "write"
+                ? "https://kacimfedjkhi.be/gifs/euroWrite_nl.gif"
+                : "https://kacimfedjkhi.be/gifs/euroOpen_nl.gif"
+            }
             width="1000"
             alt=""
           />
@@ -135,7 +134,11 @@ const Onboarding = ({ uiStore }) => {
               : `En blijf het kaartje erna op de voet volgen via de track and trace!`}
           </Baseline>
           <img
-            src={selectedAction === "write" ? onboardingWrite : onboardingOpen}
+            src={
+              selectedAction === "write"
+                ? "https://kacimfedjkhi.be/gifs/onboardingWrite.gif"
+                : "https://kacimfedjkhi.be/gifs/onboardingOpen.gif"
+            }
             width={2000}
             alt=""
           />
