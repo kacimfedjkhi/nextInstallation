@@ -10,6 +10,7 @@ class WriteStore {
   theme = "";
   message = "";
   uniqueId = "";
+  sealed = false;
 
   inputMethod = "templates";
 
@@ -126,6 +127,7 @@ decorate(WriteStore, {
   image: observable,
   inputMethod: observable,
   cardFlipped: observable,
+  sealed: observable,
   setActiveStep: action,
   handleChangeInput: action,
   handleFlipCard: action,

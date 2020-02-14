@@ -12,6 +12,8 @@ import startOpen_nl from "../assets/img/gifs/startOpen_nl.gif";
 import startOpen_fr from "../assets/img/gifs/startOpen_fr.gif";
 
 import nlActive from "../assets/img/language/nlActive.png";
+import nl from "../assets/img/language/nl.png";
+import frActive from "../assets/img/language/frActive.png";
 import fr from "../assets/img/language/fr.png";
 
 const Home = ({ uiStore }) => {
@@ -23,10 +25,18 @@ const Home = ({ uiStore }) => {
     <StyledPage>
       <LanguageBtns>
         <LanguageBtn onClick={() => uiStore.toggleLanguage("nl")}>
-          <img src={uiStore.userLanguage === "nl" ? nlActive : fr} alt="" />
+          <img
+            src={uiStore.userLanguage === "nl" ? nlActive : nl}
+            width="100"
+            alt=""
+          />
         </LanguageBtn>
         <LanguageBtn onClick={() => uiStore.toggleLanguage("fr")}>
-          <img src={uiStore.userLanguage === "fr" ? nlActive : fr} alt="" />
+          <img
+            src={uiStore.userLanguage === "fr" ? frActive : fr}
+            width="100"
+            alt=""
+          />
         </LanguageBtn>
       </LanguageBtns>
       <Link to={ROUTES.onboarding}>

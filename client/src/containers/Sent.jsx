@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { inject, observer, PropTypes } from "mobx-react";
 import { withRouter, Link } from "react-router-dom";
 import { ROUTES } from "../constants";
 import shortid from "shortid";
 import QRCode from "qrcode.react";
+
+import SealCard from "../components/SealCard";
 
 import styled from "styled-components";
 import backgroundImage from "../assets/img/adminBg.jpg";
@@ -12,6 +14,8 @@ import textBubble from "../assets/img/textBubble_purple.png";
 import nextArrow from "../assets/img/nextArrow.png";
 
 const Sent = ({ openStore, uiStore, writeStore }) => {
+  const [count, setCount] = useState(0);
+
   const handleClickWrite = () => {
     uiStore.selectedAction = "open";
     writeStore.sendCard();
@@ -25,48 +29,54 @@ const Sent = ({ openStore, uiStore, writeStore }) => {
 
   return (
     <StyledPage>
-      <ThankLine>
-        {uiStore.userLanguage === "nl"
-          ? "Bedankt, je kaartje is met succes verzonden"
-          : "Merci d'avoir répondu à cette carte"}
-        !
-      </ThankLine>
-      <Follow>
-        {uiStore.userLanguage === "nl" ? (
-          <>
-            Blijf je kaartje <span>volgen</span> via onderstaande{" "}
-            <span>QR-code</span>
-          </>
-        ) : (
-          <>
-            Continuez à <span>suivre</span> votre carte en utilisant{" "}
-            <span>le code QR</span> ci-dessous
-          </>
-        )}
-      </Follow>
-      <Others>
-        {uiStore.userLanguage === "nl"
-          ? "en zie je kaartje aangevuld worden met de kennis uit de Eurometropool!"
-          : "et voyez votre carte postale complétée par les connaissances de l'Eurométropole!"}
-      </Others>
-      <Codes>
-        <QRCode
-          value={`connext-track-and-trace.herokuapp.com/${writeStore.uniqueId}`}
-          size="210"
-        />
-        <UniqueId>{writeStore.uniqueId}</UniqueId>
-      </Codes>
-      <MoreBtn>
-        <MoreTxt>
-          <p>Heel wat kaartjes wachten nog op een antwoord..</p>
-        </MoreTxt>
-        <Link to={ROUTES.onboarding}>
-          <WriteBtn onClick={handleClickWrite}>
-            <span> Een kaartje beantwoorden</span>
-            <img src={nextArrow} width="30" alt="previous step arrow" />
-          </WriteBtn>
-        </Link>
-      </MoreBtn>
+      {!writeStore.sealed ? (
+        <SealCard />
+      ) : (
+        <>
+          <ThankLine>
+            {uiStore.userLanguage === "nl"
+              ? "Bedankt, je kaartje is met succes verzonden"
+              : "Merci d'avoir répondu à cette carte"}
+            !
+          </ThankLine>
+          <Follow>
+            {uiStore.userLanguage === "nl" ? (
+              <>
+                Blijf je kaartje <span>volgen</span> via onderstaande{" "}
+                <span>QR-code</span>
+              </>
+            ) : (
+              <>
+                Continuez à <span>suivre</span> votre carte en utilisant{" "}
+                <span>le code QR</span> ci-dessous
+              </>
+            )}
+          </Follow>
+          <Others>
+            {uiStore.userLanguage === "nl"
+              ? "en zie je kaartje aangevuld worden met de kennis uit de Eurometropool!"
+              : "et voyez votre carte postale complétée par les connaissances de l'Eurométropole!"}
+          </Others>
+          <Codes>
+            <QRCode
+              value={`connext-track-and-trace.herokuapp.com/${writeStore.uniqueId}`}
+              size="210"
+            />
+            <UniqueId>{writeStore.uniqueId}</UniqueId>
+          </Codes>
+          <MoreBtn>
+            <MoreTxt>
+              <p>Heel wat kaartjes wachten nog op een antwoord..</p>
+            </MoreTxt>
+            <Link to={ROUTES.onboarding}>
+              <WriteBtn onClick={handleClickWrite}>
+                <span> Een kaartje beantwoorden</span>
+                <img src={nextArrow} width="30" alt="previous step arrow" />
+              </WriteBtn>
+            </Link>
+          </MoreBtn>
+        </>
+      )}
     </StyledPage>
   );
 };
